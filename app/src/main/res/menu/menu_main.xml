@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menuForum"
+            android:icon="@drawable/ic_forum_gray_small"
+            android:title="@string/forum" />
+        <item
+            android:id="@+id/menuCourse"
+            android:icon="@drawable/ic_course_gray_small"
+            android:title="@string/course" />
+        <item
+            android:id="@+id/menuCourseSignUp"
+            android:icon="@drawable/ic_sign_up_course_gray_small"
+            android:title="@string/course_sign_up" />
+        <item
+            android:id="@+id/menuSchedule"
+            android:icon="@drawable/ic_schedule_gray_small"
+            android:title="@string/schedule" />
+        <item
+            android:id="@+id/menuTest"
+            android:icon="@drawable/ic_exam_gray_small"
+            android:title="@string/test_schedule" />
+        <item
+            android:id="@+id/menuLearningOutcomes"
+            android:icon="@drawable/ic_result_gray_small"
+            android:title="@string/learning_outcomes" />
+        <item
+            android:id="@+id/menuFee"
+            android:icon="@drawable/ic_fee_gray_small"
+            android:title="@string/course_fee" />
+        <item
+            android:id="@+id/menuSetting"
+            android:icon="@drawable/ic_setting_gray_small"
+            android:title="@string/setting" />
+    </group>
+</menu>
