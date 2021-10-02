@@ -1,3 +1,15 @@
+
 <resources>
     <string name="app_name">Portality</string>
+    <string name="forum">Trang chủ</string>
+    <string name="course">Học phần</string>
+    <string name="course_sign_up">Đăng ký học phần</string>
+    <string name="schedule">Thời khóa biểu</string>
+    <string name="test_schedule">Lịch thi</string>
+    <string name="learning_outcomes">Kết quả học tập</string>
+    <string name="course_fee">Học phí</string>
+    <string name="setting">Cài đặt</string>
+    <string name="exampleId">19120644@student.hcmus.edu.vn</string>
+    <string name="exampleName">Le Duc Tam</string>
+    <string name="user">User</string>
 </resources>
