@@ -8,6 +8,6 @@
         <item
             android:id="@+id/menuBotCourse"
             android:icon="@drawable/ic_user"
-            android:title="@string/course" />
+            android:title="@string/personal" />
     </group>
 </menu>

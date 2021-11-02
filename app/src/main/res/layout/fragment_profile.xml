@@ -102,7 +102,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"
             android:textSize="20sp"
-            android:text="Giới tính"/>
+            android:text="@string/Sex"/>
 
         <TextView
             android:id="@+id/sex_profile"
@@ -127,7 +127,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"
             android:textSize="20sp"
-            android:text="Chức vụ"/>
+            android:text="@string/Duty"/>
 
         <TextView
             android:id="@+id/duty_profile"
@@ -152,7 +152,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"
             android:textSize="20sp"
-            android:text="Ngày sinh"/>
+            android:text="@string/DateOfBirth"/>
 
         <TextView
             android:id="@+id/dob_profile"
@@ -176,7 +176,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"
             android:textSize="20sp"
-            android:text="Địa chỉ"/>
+            android:text="@string/Address"/>
 
         <TextView
             android:id="@+id/address_profile"

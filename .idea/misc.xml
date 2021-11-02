@@ -75,6 +75,7 @@
         <entry key="app/src/main/res/layout/fragment_forum.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.42592592592592593" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.44212962962962965" />
+        <entry key="app/src/main/res/layout/fragment_task.xml" value="0.44212962962962965" />
         <entry key="app/src/main/res/layout/header_menu_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_course_forum.xml" value="0.44212962962962965" />
         <entry key="app/src/main/res/layout/item_task_bot.xml" value="0.38657407407407407" />
