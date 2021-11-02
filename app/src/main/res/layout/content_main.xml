@@ -10,17 +10,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.125"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal">
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:background="@color/dark_blue">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolBarUser"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/user_background"
+            android:background="@drawable/notifi_menu_background"
             android:fitsSystemWindows="true"
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,46 +29,30 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:text="DT"
             android:textColor="@color/white"
             android:textStyle="bold"
+            android:background="@drawable/ic_main_menu"
             app:layout_constraintBottom_toBottomOf="@+id/toolBarUser"
             app:layout_constraintEnd_toEndOf="@+id/toolBarUser"
             app:layout_constraintStart_toStartOf="@+id/toolBarUser"
             app:layout_constraintTop_toTopOf="@+id/toolBarUser" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="22dp"
-            android:text="@string/exampleName"
-            android:textColor="@color/black"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/toolBarUser"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageButton
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="25dp"
-            android:background="@drawable/notifi_background"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/notifi_menu_background"
             android:src="@drawable/ic_notification"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/white_100"/>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.78" />
+        android:layout_weight="0.805" />
 
     <View
         android:layout_width="match_parent"

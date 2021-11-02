@@ -6,30 +6,30 @@
     android:layout_height="match_parent"
     android:layout_gravity="bottom">
     <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottomAppBar"
+        android:id="@+id/bottomAppbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="10dp"
+        app:fabCradleMargin="20dp"
+        app:fabCradleRoundedCornerRadius="20dp"
         app:fabCradleVerticalOffset="10dp"
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp">
+        app:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp">
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:menu="@menu/menu_bottom_main_screen"
-            android:id="@+id/bottomMenu"
-            app:elevation="0dp"/>
+            app:menu="@menu/menu_bottom_main_screen"/>
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/bottomAppBar"
         android:src="@drawable/ic_add"
-        android:backgroundTint="@color/purple_600"
-        app:layout_anchorGravity="center|top"/>
-    <include layout="@layout/content_main"/>
+        app:fabSize="auto"
+        android:backgroundTint="@color/dark_blue"
+        app:layout_anchor="@id/bottomAppbar"/>
+    <include
+        layout="@layout/content_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -2,20 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/menuBotForum"
-            android:icon="@drawable/ic_forum_gray_medium"
+            android:id="@+id/menuHomeBot"
+            android:icon="@drawable/ic_home"
             android:title="@string/forum" />
         <item
             android:id="@+id/menuBotCourse"
-            android:icon="@drawable/ic_course_gray_medium"
+            android:icon="@drawable/ic_person"
             android:title="@string/course" />
-        <item
-            android:id="@+id/menuBotSchedule"
-            android:icon="@drawable/ic_schedule_gray_medium"
-            android:title="@string/schedule" />
-        <item
-            android:id="@+id/menuBotUser"
-            android:icon="@drawable/ic_user_gray_medium"
-            android:title="@string/user" />
     </group>
 </menu>

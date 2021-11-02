@@ -36,7 +36,7 @@ public class MainScreen extends AppCompatActivity {
     private void eventToolBar() {
         setSupportActionBar(toolBarUser);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("");
+
 
         toolBarUser.setOnClickListener(new View.OnClickListener() {
             @Override

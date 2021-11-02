@@ -4,7 +4,6 @@
     <corners
         android:radius="10dp" />
     <gradient
-        android:angle="10"
-        android:endColor="@color/gray"
-        android:type="linear" />
+        android:endColor="@color/noti_background"
+        android:startColor="@color/noti_background"/>
 </shape>

@@ -1,64 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/header_menu_main_background">
+    android:layout_width="match_parent"
+    android:layout_height="176dp"
+    android:background="@color/white"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <LinearLayout
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="195dp"
-        android:layout_marginBottom="68dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="DT"
         android:gravity="center"
-        android:background="@drawable/user_background">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:textColor="@color/white"
-            android:text="DT"/>
-    </LinearLayout>
+        android:textSize="40dp"
+        android:textColor="@color/white"
+        android:background="@drawable/circle_icon"/>
 
     <TextView
-        android:id="@+id/userName"
-        android:layout_width="79dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="109dp"
-        android:layout_marginEnd="182dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/exampleName"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="9dp"
+        android:text="Lê Đức Tâm"
+        android:textSize="22dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/mail"
-        android:layout_width="216dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="131dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="11dp"
-        android:text="@string/exampleId"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="19120644@student.hcmus.edu.vn"
+        android:textSize="16dp"
+        android:textColor="#50000000"/>
+</LinearLayout>
