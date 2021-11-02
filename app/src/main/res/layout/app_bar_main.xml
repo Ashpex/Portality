@@ -17,6 +17,7 @@
         app:contentInsetLeft="0dp">
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
+            app:backgroundTint="#f0f0f0"
             android:layout_height="match_parent"
             app:menu="@menu/menu_bottom_main_screen"/>
     </com.google.android.material.bottomappbar.BottomAppBar>
