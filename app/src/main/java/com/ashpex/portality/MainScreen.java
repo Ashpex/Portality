@@ -26,7 +26,6 @@ public class MainScreen extends AppCompatActivity {
     private androidx.appcompat.widget.Toolbar toolBarUser;
     private NavigationView navigationView;
     private FrameLayout frMain;
-    private FragmentTransaction transaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,17 +62,34 @@ public class MainScreen extends AppCompatActivity {
 
     private void eventClickNav(MenuItem item) {
         item.setChecked(true);
-        if(item.getItemId() == R.id.menuHome)
-        {
-            transaction.replace(R.id.frMain, new ForumFragment());
-            transaction.commit();
+        switch (item.getItemId()){
+            case R.id.menuHome:{
+                FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frMain, new ForumFragment());
+                transaction.commit();
+                drawerLayout.closeDrawers();
+                return;
+            }
+            case R.id.menuTask:{
+                FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frMain, new TaskFragment());
+                transaction.commit();
+                drawerLayout.closeDrawers();
+                return;
+            }
+            case R.id.menuSchedule:{
+                /*transaction.replace(R.id.frMain, new TaskFragment());
+                transaction.commit();*/
+                Log.d("clo", "3");
+                drawerLayout.closeDrawers();
+                return;
+            }
+            default: {
+                drawerLayout.closeDrawers();
+                return;
+            }
         }
-        if(item.getItemId() == R.id.menuTask)
-        {
-            transaction.replace(R.id.frMain, new TaskFragment());
-            transaction.commit();
-        }
-        drawerLayout.closeDrawers();
+
     }
 
     private void mappingControls() {
@@ -81,6 +97,5 @@ public class MainScreen extends AppCompatActivity {
         toolBarUser = findViewById(R.id.toolBarUser);
         navigationView = findViewById(R.id.nav_view_main);
         frMain = findViewById(R.id.frMain);
-        transaction = this.getSupportFragmentManager().beginTransaction();
     }
 }
