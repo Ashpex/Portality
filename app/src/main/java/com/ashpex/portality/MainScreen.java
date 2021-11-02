@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.ashpex.portality.fragment.ForumFragment;
+import com.ashpex.portality.fragment.SignUpCourseFragment;
 import com.ashpex.portality.fragment.TaskFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -77,10 +78,10 @@ public class MainScreen extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                 return;
             }
-            case R.id.menuSchedule:{
-                /*transaction.replace(R.id.frMain, new TaskFragment());
-                transaction.commit();*/
-                Log.d("clo", "3");
+            case R.id.menuCourseSignUp:{
+                FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frMain, new SignUpCourseFragment());
+                transaction.commit();
                 drawerLayout.closeDrawers();
                 return;
             }
