@@ -86,7 +86,6 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:inputType="textPassword"
-            android:drawableEnd="@drawable/ic_outline_eye"
             android:hint="Mật khẩu" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -106,7 +105,6 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:inputType="textPassword"
-            android:drawableEnd="@drawable/ic_outline_lock"
             android:hint="Nhập lại mật khẩu" />
 
     </com.google.android.material.textfield.TextInputLayout>
