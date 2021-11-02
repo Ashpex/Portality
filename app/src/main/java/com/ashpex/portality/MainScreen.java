@@ -15,12 +15,15 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.ashpex.portality.fragment.ForumFragment;
 import com.ashpex.portality.fragment.SignUpCourseFragment;
 import com.ashpex.portality.fragment.TaskFragment;
+import com.ashpex.portality.fragment.ProfileFragment;
 import com.google.android.material.navigation.NavigationView;
+
 
 public class MainScreen extends AppCompatActivity {
     private DrawerLayout drawerLayout;
@@ -85,6 +88,14 @@ public class MainScreen extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                 return;
             }
+
+            case R.id.menuBotCourse:{
+                FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frMain, new ProfileFragment());
+                transaction.commit();
+                drawerLayout.closeDrawers();
+                return;
+            }
             default: {
                 drawerLayout.closeDrawers();
                 return;
@@ -98,5 +109,6 @@ public class MainScreen extends AppCompatActivity {
         toolBarUser = findViewById(R.id.toolBarUser);
         navigationView = findViewById(R.id.nav_view_main);
         frMain = findViewById(R.id.frMain);
+
     }
 }
