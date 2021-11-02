@@ -96,6 +96,12 @@ public class MainScreen extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                 return;
             }
+
+            case R.id.menuExit:{
+                drawerLayout.closeDrawers();
+                setContentView(R.layout.activity_login);
+            }
+
             default: {
                 drawerLayout.closeDrawers();
                 return;
