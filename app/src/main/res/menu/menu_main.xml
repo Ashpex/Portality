@@ -23,6 +23,7 @@
             android:title="@string/course_fee" />
         <item
             android:id="@+id/menuExit"
+            android:iconTint="@color/red"
             android:icon="@drawable/ic_exit"
             android:title="@string/exit" />
     </group>
