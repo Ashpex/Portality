@@ -11,4 +11,7 @@
     <string name="user">User</string>
     <string name="task">Nhiệm vụ</string>
     <string name="DT">DT</string>
+    <string name="name_course">Toán tổ hợp</string>
+    <string name="time">Thời gian: 7:30 AM - 11:30 AM </string>
+    <string name="techer">Giáo viên: Nguyễn Văn A</string>
 </resources>

@@ -14,4 +14,5 @@
     <color name="red">#FF3333</color>
     <color name="white_100">#EEEEEE</color>
     <color name="noti_background">#3C4A66</color>
+    <color name="search_background">#33C4C4C4</color>
 </resources>

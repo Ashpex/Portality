@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,13 +15,16 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 
+import com.ashpex.portality.fragment.ForumFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainScreen extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private androidx.appcompat.widget.Toolbar toolBarUser;
     private NavigationView navigationView;
+    private FrameLayout frMain;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +61,12 @@ public class MainScreen extends AppCompatActivity {
 
     private void eventClickNav(MenuItem item) {
         item.setChecked(true);
+        if(item.getItemId() == R.id.menuHome)
+        {
+            FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frMain, new ForumFragment());
+            transaction.commit();
+        }
         drawerLayout.closeDrawers();
     }
 
@@ -64,5 +74,6 @@ public class MainScreen extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         toolBarUser = findViewById(R.id.toolBarUser);
         navigationView = findViewById(R.id.nav_view_main);
+        frMain = findViewById(R.id.frMain);
     }
 }
