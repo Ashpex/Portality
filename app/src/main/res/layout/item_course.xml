@@ -26,11 +26,12 @@
             android:textSize="18sp"
             android:text="@string/name_course"
             android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:singleLine="true"/>
         <TextView
             android:id="@+id/nameTeacher_item"
             android:layout_width="wrap_content"
-            android:layout_height="15dp"
+            android:layout_height="18dp"
             android:textSize="14sp"
             android:text="@string/teacher"
             android:textColor="@color/black"/>
