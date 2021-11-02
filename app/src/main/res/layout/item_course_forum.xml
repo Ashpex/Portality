@@ -35,7 +35,7 @@
             android:id="@+id/nameTeacher"
             android:layout_width="wrap_content"
             android:layout_height="18dp"
-            android:text="@string/techer"
+            android:text="@string/teacher"
             android:textColor="@color/black"/>
     </LinearLayout>
 </LinearLayout>
