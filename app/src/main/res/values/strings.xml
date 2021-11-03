@@ -39,5 +39,6 @@
     <string name="MenuUser">Cá nhân</string>
     <string name="SexMale">Nam</string>
     <string name="DutyStudent">Sinh viên</string>
+    <string name="SaveEdit">Save</string>
 
 </resources>

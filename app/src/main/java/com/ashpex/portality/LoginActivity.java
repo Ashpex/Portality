@@ -41,6 +41,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        btnForgotPassword_Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.fragment_forgot_password1);
+            }
+        });
+
     }
 
     private void mappingControls(){
