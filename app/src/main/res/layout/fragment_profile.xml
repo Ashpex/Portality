@@ -36,7 +36,7 @@
                 android:textStyle="bold"
                 android:textSize="28sp"
                 android:textColor="@color/white"
-                android:text="Lê Đức Tâm"/>
+                android:text="@string/exampleName"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
             android:textSize="18sp"
             android:layout_marginStart="20dp"
             android:textColor="@color/gray"
-            android:text="19120644@student.hcmus.edu.vn"/>
+            android:text="@string/exampleId"/>
 
         <View
             android:layout_width="match_parent"
@@ -111,7 +111,7 @@
             android:textSize="18sp"
             android:layout_marginStart="20dp"
             android:textColor="@color/gray"
-            android:text="Nam"/>
+            android:text="@string/SexMale"/>
 
         <View
             android:layout_width="match_parent"
@@ -136,7 +136,7 @@
             android:textSize="18sp"
             android:layout_marginStart="20dp"
             android:textColor="@color/gray"
-            android:text="Sinh viên"/>
+            android:text="@string/DutyStudent"/>
 
         <View
             android:layout_width="match_parent"

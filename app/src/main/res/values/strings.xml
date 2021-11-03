@@ -17,7 +17,6 @@
     <string name="content">Nội dung: Làm bài tập tuần 02</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="personal">Cá nhân</string>
     <string name="login">Đăng nhập</string>
     <string name="forgotPassword">Quên mật khẩu?</string>
     <string name="cancel">Hủy</string>
@@ -25,7 +24,6 @@
     <string name="confirm">Xác nhận</string>
     <string name="ReEnterPassword">Nhập mật lại khẩu mới</string>
     <string name="EnterNewPassword">Nhập mật khẩu mới</string>
-    <string name="portality">Portality</string>
     <string name="EnterEmail">Nhập email</string>
     <string name="SignUp">Đăng ký</string>
     <string name="Or">HOẶC</string>
@@ -38,4 +36,8 @@
     <string name="Surname">Họ</string>
     <string name="Firstname">Tên</string>
     <string name="PolicyAgreement">Bạn đồng ý với Điều khoản, Chính sách dữ liệu và chính sách cookie của chúng tôi.</string>
+    <string name="MenuUser">Cá nhân</string>
+    <string name="SexMale">Nam</string>
+    <string name="DutyStudent">Sinh viên</string>
+
 </resources>

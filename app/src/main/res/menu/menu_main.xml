@@ -22,6 +22,10 @@
             android:icon="@drawable/ic_fee"
             android:title="@string/course_fee" />
         <item
+            android:id="@+id/menuUser"
+            android:icon="@drawable/ic_user"
+            android:title="@string/MenuUser"/>
+        <item
             android:id="@+id/menuExit"
             android:iconTint="@color/red"
             android:icon="@drawable/ic_exit"

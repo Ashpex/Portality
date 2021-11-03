@@ -6,8 +6,8 @@
             android:icon="@drawable/ic_home"
             android:title="@string/forum" />
         <item
-            android:id="@+id/menuBotCourse"
+            android:id="@+id/menuBotUser"
             android:icon="@drawable/ic_user"
-            android:title="@string/personal" />
+            android:title="@string/MenuUser" />
     </group>
 </menu>

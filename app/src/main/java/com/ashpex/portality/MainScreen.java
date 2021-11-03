@@ -89,7 +89,13 @@ public class MainScreen extends AppCompatActivity {
                 return;
             }
 
-            case R.id.menuBotCourse:{
+
+            case R.id.menuSchedule:{
+                drawerLayout.closeDrawers();
+                return;
+            }
+
+            case R.id.menuUser:{
                 FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frMain, new ProfileFragment());
                 transaction.commit();
@@ -101,6 +107,7 @@ public class MainScreen extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                 setContentView(R.layout.activity_login);
             }
+
 
             default: {
                 drawerLayout.closeDrawers();
