@@ -72,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <LinearLayout
+                    android:id="@+id/layout_course_forum"
                     android:orientation="vertical"
                     android:layout_width="143dp"
                     android:layout_height="169dp"

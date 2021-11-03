@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Portality">
         <activity
+            android:name=".NotificationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CourseActivity"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity

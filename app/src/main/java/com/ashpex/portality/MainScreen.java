@@ -9,6 +9,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 
 import com.ashpex.portality.fragment.ForumFragment;
 import com.ashpex.portality.fragment.SignUpCourseFragment;
@@ -30,6 +32,7 @@ public class MainScreen extends AppCompatActivity {
     private androidx.appcompat.widget.Toolbar toolBarUser;
     private NavigationView navigationView;
     private FrameLayout frMain;
+    private ImageButton btnNoti;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +40,18 @@ public class MainScreen extends AppCompatActivity {
 
         mappingControls();
         eventToolBar();
+        eventNoti();
 
+    }
 
+    private void eventNoti() {
+        btnNoti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainScreen.this, NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -122,6 +135,7 @@ public class MainScreen extends AppCompatActivity {
         toolBarUser = findViewById(R.id.toolBarUser);
         navigationView = findViewById(R.id.nav_view_main);
         frMain = findViewById(R.id.frMain);
+        btnNoti = findViewById(R.id.btnNoti);
 
     }
 }

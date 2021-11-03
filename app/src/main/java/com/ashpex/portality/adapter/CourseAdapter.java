@@ -13,21 +13,21 @@ import com.ashpex.portality.R;
 
 import java.util.List;
 
-public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapter.SignUpCourseViewHolder>{
+public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder>{
     private final List<String> mlist;
-    public SignUpCourseAdapter(List<String> list) {
+    public CourseAdapter(List<String> list) {
         mlist = list;
     }
     @NonNull
     @Override
-    public SignUpCourseAdapter.SignUpCourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CourseAdapter.CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new SignUpCourseViewHolder(LayoutInflater.from(parent.getContext())
+        return new CourseViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_course_sign_up, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SignUpCourseViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
         holder.bindData(mlist.get(position));
     }
 
@@ -36,12 +36,12 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
         return mlist.size();
     }
 
-    public static class SignUpCourseViewHolder extends RecyclerView.ViewHolder{
+    public static class CourseViewHolder extends RecyclerView.ViewHolder{
 
         private final TextView nameCourse_item;
         private final TextView nameTeacher_item;
         private final ImageButton btnRegister;
-        public SignUpCourseViewHolder(@NonNull View itemView) {
+        public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
             nameCourse_item = itemView.findViewById(R.id.nameCourse_item);
             nameTeacher_item = itemView.findViewById(R.id.nameTeacher_item);
@@ -50,7 +50,7 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
         public void bindData(String pos) {
             nameCourse_item.setText("Giáo dục công dân");
             nameTeacher_item.setText("Giảng viên: Lee Quan");
-            btnRegister.setBackgroundResource(R.drawable.ic_unregistered);
+            btnRegister.setBackgroundResource(R.drawable.ic_finished);
         }
     }
 }
