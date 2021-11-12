@@ -9,7 +9,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -24,6 +26,7 @@ import com.ashpex.portality.fragment.ForumFragment;
 import com.ashpex.portality.fragment.SignUpCourseFragment;
 import com.ashpex.portality.fragment.TaskFragment;
 import com.ashpex.portality.fragment.ProfileFragment;
+import com.ashpex.portality.model.InfoUser;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -34,14 +37,19 @@ public class MainScreen extends AppCompatActivity {
     private FrameLayout frMain;
     private ImageButton btnNoti;
     private Intent intent;
+    private InfoUser infoUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
-        intent = getIntent();
+        setData();
         mappingControls();
         eventToolBar();
         eventNoti();
+    }
+
+    private void setData() {
+        intent = getIntent();
     }
 
     private void eventNoti() {
@@ -79,6 +87,7 @@ public class MainScreen extends AppCompatActivity {
 
     private void eventClickNav(MenuItem item) {
         item.setChecked(true);
+
         switch (item.getItemId()){
             case R.id.menuHome:{
                 FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
@@ -118,12 +127,15 @@ public class MainScreen extends AppCompatActivity {
 
             case R.id.menuExit:{
                 drawerLayout.closeDrawers();
-                setContentView(R.layout.activity_login);
+                SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+                sharedPref.edit().clear().apply();
+                finish();
             }
 
 
             default: {
                 drawerLayout.closeDrawers();
+
                 return;
             }
         }

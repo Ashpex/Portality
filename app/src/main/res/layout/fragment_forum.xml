@@ -18,6 +18,7 @@
             android:textSize="20dp"
             android:textColor="@color/white"/>
         <TextView
+            android:id="@+id/txtNameUser_forum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lê Đức Tâm"
@@ -97,6 +98,7 @@
                         android:singleLine="false"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/layout_Schedule_forum"
                     android:orientation="vertical"
                     android:layout_width="143dp"
                     android:layout_height="170dp"
@@ -121,6 +123,7 @@
                         android:singleLine="false"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/layout_task_forum"
                     android:orientation="vertical"
                     android:layout_width="143dp"
                     android:layout_height="169dp"
@@ -145,6 +148,7 @@
                         android:singleLine="false"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/layout_fee_forum"
                     android:orientation="vertical"
                     android:layout_width="143dp"
                     android:layout_height="169dp"
@@ -177,7 +181,7 @@
             android:textSize="20dp"
             android:textStyle="bold"/>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/ryc"
+            android:id="@+id/ryc_forum"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="20dp"/>

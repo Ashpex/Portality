@@ -38,6 +38,7 @@
                 android:textColor="@color/white"
                 android:text="@string/exampleName"/>
             <TextView
+                android:id="@+id/txtCountCourse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#FFDFDFDF"
@@ -46,7 +47,7 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/editButton"
+            android:id="@+id/btnEditProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/dark_blue"
