@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,7 @@ import com.ashpex.portality.fragment.SignUpCourseFragment;
 import com.ashpex.portality.fragment.TaskFragment;
 import com.ashpex.portality.fragment.ProfileFragment;
 import com.ashpex.portality.model.InfoUser;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -38,6 +40,7 @@ public class MainScreen extends AppCompatActivity {
     private ImageButton btnNoti;
     private Intent intent;
     private InfoUser infoUser;
+    private BottomNavigationView bottomNavigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,13 +86,23 @@ public class MainScreen extends AppCompatActivity {
             }
         });
 
+        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                eventClickNav(item);
+                return true;
+            }
+        });
     }
+
+
 
     private void eventClickNav(MenuItem item) {
         item.setChecked(true);
 
         switch (item.getItemId()){
             case R.id.menuHome:{
+                bottomNavigation.getMenu().findItem(R.id.menuBotHome).setChecked(true);
                 FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frMain, new ForumFragment());
                 transaction.commit();
@@ -118,6 +131,7 @@ public class MainScreen extends AppCompatActivity {
             }
 
             case R.id.menuUser:{
+                bottomNavigation.getMenu().findItem(R.id.menuBotUser).setChecked(true);
                 FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frMain, new ProfileFragment());
                 transaction.commit();
@@ -131,8 +145,20 @@ public class MainScreen extends AppCompatActivity {
                 sharedPref.edit().clear().apply();
                 finish();
             }
-
-
+            case R.id.menuBotHome:{
+                navigationView.getMenu().findItem(R.id.menuHome).setChecked(true);
+                FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frMain, new ForumFragment());
+                transaction.commit();
+                return;
+            }
+            case R.id.menuBotUser:{
+                navigationView.getMenu().findItem(R.id.menuUser).setChecked(true);
+                FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frMain, new ProfileFragment());
+                transaction.commit();
+                return;
+            }
             default: {
                 drawerLayout.closeDrawers();
 
@@ -148,6 +174,6 @@ public class MainScreen extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view_main);
         frMain = findViewById(R.id.frMain);
         btnNoti = findViewById(R.id.btnNoti);
-
+        bottomNavigation = findViewById(R.id.bottomNavigation);
     }
 }
