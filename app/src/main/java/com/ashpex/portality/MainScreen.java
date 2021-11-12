@@ -33,15 +33,15 @@ public class MainScreen extends AppCompatActivity {
     private NavigationView navigationView;
     private FrameLayout frMain;
     private ImageButton btnNoti;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
-
+        intent = getIntent();
         mappingControls();
         eventToolBar();
         eventNoti();
-
     }
 
     private void eventNoti() {
