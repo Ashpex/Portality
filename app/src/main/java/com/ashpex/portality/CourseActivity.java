@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -52,6 +53,9 @@ public class CourseActivity extends AppCompatActivity {
     }
 
     private void callApiGetDataCourse() {
+        ProgressDialog mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage("Loading, please wait...");
+        mProgressDialog.show();
         ApiService.apiService.getCourse(0).enqueue(new Callback<List<Course>>() {
             @Override
             public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
@@ -61,9 +65,11 @@ public class CourseActivity extends AppCompatActivity {
                     ryc_course_activity.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
                     ryc_course_activity.setAdapter(courseAdapter);
                 }
+                mProgressDialog.cancel();
             }
             @Override
             public void onFailure(Call<List<Course>> call, Throwable t) {
+                mProgressDialog.cancel();
             }
         });
     }

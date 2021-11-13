@@ -92,6 +92,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginChecking(String email, String password) {
         LoginRequest loginRequest = new LoginRequest(email, password);
+
+        ProgressDialog mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage("Loading, please wait...");
+        mProgressDialog.show();
         ApiService.apiService.loginAction(loginRequest).enqueue(new Callback<LoginStatus>() {
             @Override
             public void onResponse(Call<LoginStatus> call, Response<LoginStatus> response) {
@@ -100,12 +104,15 @@ public class LoginActivity extends AppCompatActivity {
                     token = response.headers().get("Auth");
                     loginSuccess(loginStatus.getUser());
                 }
-                else
+                else {
                     Toast.makeText(getApplicationContext(), "Some things went wrong", Toast.LENGTH_SHORT).show();
+                }
+                mProgressDialog.cancel();
             }
 
             @Override
             public void onFailure(Call<LoginStatus> call, Throwable t) {
+                mProgressDialog.cancel();
                 Toast.makeText(getApplicationContext(), "Some things went wrong", Toast.LENGTH_SHORT).show();
             }
         });

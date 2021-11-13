@@ -47,8 +47,13 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.main_screen);
         setData();
         mappingControls();
+        settingBottomNavigation();
         eventToolBar();
         eventNoti();
+    }
+
+    private void settingBottomNavigation() {
+        bottomNavigation.setBackground(null);
     }
 
     private void setData() {
