@@ -3,6 +3,7 @@ package com.ashpex.portality.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ashpex.portality.CourseActivity;
 import com.ashpex.portality.R;
-import com.ashpex.portality.adapter.UserCourseForumAdapter;
+import com.ashpex.portality.adapter.UserCourseOnStudyingAdapter;
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.UserCourseOnStudying;
 
@@ -43,7 +43,7 @@ public class ForumFragment extends Fragment {
     private String userName;
     private String token;
     private Integer userId;
-    private UserCourseForumAdapter userCourseAdapter;
+    private UserCourseOnStudyingAdapter userCourseAdapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -75,10 +75,9 @@ public class ForumFragment extends Fragment {
             public void onResponse(Call<List<UserCourseOnStudying>> call, Response<List<UserCourseOnStudying>> response) {
                 if(response.code() == 200) {
                     List<UserCourseOnStudying> mlist = response.body();
-                    filterList(mlist);
-                    userCourseAdapter.setList(mlist);
-                    ryc_forum.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-                    ryc_forum.setAdapter(userCourseAdapter);
+                    FilterAsyncTask filterAsyncTask = new FilterAsyncTask();
+                    filterAsyncTask.setMlist(mlist);
+                    filterAsyncTask.execute();
                 }
             }
 
@@ -115,7 +114,27 @@ public class ForumFragment extends Fragment {
         layout_fee_forum = view.findViewById(R.id.layout_fee_forum);
         ryc_forum = view.findViewById(R.id.ryc_forum);
 
-        userCourseAdapter = new UserCourseForumAdapter();
+        userCourseAdapter = new UserCourseOnStudyingAdapter();
     }
 
+    class FilterAsyncTask extends AsyncTask<Void, Void, Void> {
+        List<UserCourseOnStudying> mlist;
+
+        public void setMlist(List<UserCourseOnStudying> mlist) {
+            this.mlist = mlist;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            filterList(mlist);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void unused) {
+            userCourseAdapter.setList(mlist);
+            ryc_forum.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+            ryc_forum.setAdapter(userCourseAdapter);
+        }
+    }
 }

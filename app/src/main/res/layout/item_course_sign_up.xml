@@ -5,8 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:padding="5dp"
-    android:background="@drawable/radius"
-    android:backgroundTint="#E4EDFF">
+    android:id="@+id/layout_color"
+    android:background="@drawable/radius">
     <ImageButton
         android:layout_width="60dp"
         android:layout_height="60dp"

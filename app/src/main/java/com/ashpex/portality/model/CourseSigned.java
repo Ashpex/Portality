@@ -1,17 +1,25 @@
 package com.ashpex.portality.model;
 
-public class Course {
+public class CourseSigned {
     private Integer course_id;
     private String course_name;
-    private Integer subject_id;
+    private String subject_name ;
     private String time_start;
     private String time_end;
     private Integer day_study;
     private int curr_state;
     private String teacher_name;
-
+    private String color;
     public Integer getCourse_id() {
         return course_id;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public void setCourse_id(Integer course_id) {
@@ -26,12 +34,12 @@ public class Course {
         this.course_name = course_name;
     }
 
-    public Integer getSubject_id() {
-        return subject_id;
+    public String getSubject_name() {
+        return subject_name;
     }
 
-    public void setSubject_id(Integer subject_id) {
-        this.subject_id = subject_id;
+    public void setSubject_name(String subject_name) {
+        this.subject_name = subject_name;
     }
 
     public String getTime_start() {

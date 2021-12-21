@@ -1,6 +1,6 @@
 package com.ashpex.portality.api;
 
-import com.ashpex.portality.model.Course;
+import com.ashpex.portality.model.CourseSigned;
 import com.ashpex.portality.model.LoginRequest;
 import com.ashpex.portality.model.LoginStatus;
 import com.ashpex.portality.model.UserCourseOnStudying;
@@ -33,10 +33,10 @@ public interface ApiService {
     @POST("/user/login")
     Call<LoginStatus> loginAction(@Body LoginRequest loginRequest);
     @GET("/user/{userId}/allCourses")
-    Call<List<Course>> getAllUserCourse(@Path("userId") Integer userId, @Header("auth") String token);
+    Call<List<CourseSigned>> getAllUserCourseSigned(@Path("userId") Integer userId, @Header("auth") String token);
     @GET("/user/{userId}/courses")
     Call<List<UserCourseOnStudying>> getUserCourse(@Path("userId") Integer userId, @Header("auth") String token);
-
     @GET("/course/all")
-    Call<List<Course>> getAllCourse(@Query("page") int page);
+    Call<List<CourseSigned>> getAllCourse(@Query("page") int page);
+
 }

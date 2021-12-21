@@ -12,17 +12,17 @@ import com.ashpex.portality.R;
 
 import java.util.List;
 
-public class ForumAdapter extends RecyclerView.Adapter<ForumAdapter.ForumViewHolder> {
+public class CourseOnStudyingAdapter extends RecyclerView.Adapter<CourseOnStudyingAdapter.ForumViewHolder> {
     @NonNull
     private List<String> mlist;
-    public ForumAdapter(List<String> list) {
+    public CourseOnStudyingAdapter(List<String> list) {
         mlist = list;
     }
     @Override
     public ForumViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         return new ForumViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_course_forum, parent, false));
+                .inflate(R.layout.item_course_on_studying, parent, false));
     }
 
     @Override

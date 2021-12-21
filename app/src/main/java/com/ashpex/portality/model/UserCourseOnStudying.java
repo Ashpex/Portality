@@ -4,11 +4,11 @@ public class UserCourseOnStudying {
     private String course_name;
     private String teacher_name;
     private int course_id;
-    private int subject_id;
+    private String subject_name;
     private String time_start;
     private String time_end;
     private int day_study;
-
+    private String color;
     public String getCourse_name() {
         return course_name;
     }
@@ -33,12 +33,20 @@ public class UserCourseOnStudying {
         this.course_id = course_id;
     }
 
-    public int getSubject_id() {
-        return subject_id;
+    public String getSubject_name() {
+        return subject_name;
     }
 
-    public void setSubject_id(int subject_id) {
-        this.subject_id = subject_id;
+    public void setSubject_name(String subject_name) {
+        this.subject_name = subject_name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getTime_start() {

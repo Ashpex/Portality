@@ -6,21 +6,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
 import com.ashpex.portality.adapter.CourseAdapter;
 import com.ashpex.portality.api.ApiService;
-import com.ashpex.portality.model.Course;
+import com.ashpex.portality.model.CourseSigned;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -31,7 +25,7 @@ public class CourseActivity extends AppCompatActivity {
     private RecyclerView ryc_course_activity;
     private ImageButton btnBack_course;
     private CourseAdapter courseAdapter;
-    private List<Course> listCourse;
+    private List<CourseSigned> listCourseSigned;
     private String userName ;
     private String token ;
     private int userId ;
@@ -68,19 +62,19 @@ public class CourseActivity extends AppCompatActivity {
         mProgressDialog.setMessage("Loading, please wait...");
         mProgressDialog.show();
 
-        ApiService.apiService.getAllUserCourse(userId, token).enqueue(new Callback<List<Course>>() {
+        ApiService.apiService.getAllUserCourseSigned(userId, token).enqueue(new Callback<List<CourseSigned>>() {
             @Override
-            public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
+            public void onResponse(Call<List<CourseSigned>> call, Response<List<CourseSigned>> response) {
                 if(response.code()==200) {
-                    listCourse = response.body();
-                    courseAdapter.setList(listCourse);
+                    listCourseSigned = response.body();
+                    courseAdapter.setList(listCourseSigned);
                     ryc_course_activity.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
                     ryc_course_activity.setAdapter(courseAdapter);
                 }
                 mProgressDialog.cancel();
             }
             @Override
-            public void onFailure(Call<List<Course>> call, Throwable t) {
+            public void onFailure(Call<List<CourseSigned>> call, Throwable t) {
                 mProgressDialog.cancel();
             }
         });
@@ -95,6 +89,8 @@ public class CourseActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        courseAdapter.setList(listCourse);
+        courseAdapter.setList(listCourseSigned);
     }
+
+
 }

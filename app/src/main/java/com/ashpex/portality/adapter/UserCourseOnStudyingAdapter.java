@@ -13,7 +13,7 @@ import com.ashpex.portality.model.UserCourseOnStudying;
 
 import java.util.List;
 
-public class UserCourseForumAdapter extends RecyclerView.Adapter<UserCourseForumAdapter.UserCourseViewHolder>{
+public class UserCourseOnStudyingAdapter extends RecyclerView.Adapter<UserCourseOnStudyingAdapter.UserCourseViewHolder>{
     private List<UserCourseOnStudying> mlist;
 
     public void notifyData() {
@@ -25,14 +25,14 @@ public class UserCourseForumAdapter extends RecyclerView.Adapter<UserCourseForum
     }
     @NonNull
     @Override
-    public UserCourseForumAdapter.UserCourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UserCourseOnStudyingAdapter.UserCourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new UserCourseForumAdapter.UserCourseViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_course_forum, parent, false));
+        return new UserCourseOnStudyingAdapter.UserCourseViewHolder(LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_course_on_studying, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserCourseForumAdapter.UserCourseViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UserCourseOnStudyingAdapter.UserCourseViewHolder holder, int position) {
         holder.bindData(mlist.get(position));
     }
 
@@ -54,7 +54,7 @@ public class UserCourseForumAdapter extends RecyclerView.Adapter<UserCourseForum
         }
         public void bindData(UserCourseOnStudying pos) {
             nameCourse.setText(pos.getCourse_name());
-            timeCourse.setText("Thời gian: "+ pos.getTime_start().substring(0,4)+ " - " + pos.getTime_end().substring(0,4));
+            timeCourse.setText("Thời gian: "+ pos.getTime_start().substring(0,5)+ " - " + pos.getTime_end().substring(0,5));
             nameTeacher.setText("Giáo viên: " + pos.getTeacher_name());
         }
     }

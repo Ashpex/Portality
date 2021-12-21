@@ -1,27 +1,31 @@
 package com.ashpex.portality.adapter;
 
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.graphics.Color;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ashpex.portality.R;
-import com.ashpex.portality.model.Course;
+import com.ashpex.portality.model.CourseSigned;
 
 import java.util.List;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder>{
-    private  List<Course> mlist;
+    private  List<CourseSigned> mlist;
 
     public void notifyData() {
         notifyDataSetChanged();
     }
-    public void setList(List<Course> list) {
+    public void setList(List<CourseSigned> list) {
         mlist = list;
         notifyDataSetChanged();
     }
@@ -48,20 +52,23 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         private final TextView nameCourse_item;
         private final TextView nameTeacher_item;
         private final ImageButton btnRegister;
+        private final LinearLayout layout_color;
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
             nameCourse_item = itemView.findViewById(R.id.nameCourse_item);
             nameTeacher_item = itemView.findViewById(R.id.nameTeacher_item);
             btnRegister = itemView.findViewById(R.id.btnRegister);
+            layout_color = itemView.findViewById(R.id.layout_color);
         }
-        public void bindData(Course pos) {
+        public void bindData(CourseSigned pos) {
             nameCourse_item.setText(pos.getCourse_name());
             nameTeacher_item.setText("Giáo viên: " + pos.getTeacher_name());
-            Log.d("Alo", String.valueOf(pos.getCurr_state()));
-            if(pos.getCurr_state() == 1)
-            btnRegister.setBackgroundResource(R.drawable.ic_unfinished);
-            else if(pos.getCurr_state() == 2)
-                btnRegister.setBackgroundResource(R.drawable.ic_finished);
+            if(pos.getCurr_state() == 2)
+            btnRegister.setBackgroundResource(R.drawable.ic_finished);
+            else
+                btnRegister.setBackgroundResource(R.drawable.ic_unfinished);
+
+            layout_color.setBackgroundColor(Color.parseColor(pos.getColor()));
         }
     }
 }
