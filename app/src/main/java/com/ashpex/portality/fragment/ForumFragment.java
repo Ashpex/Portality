@@ -18,14 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ashpex.portality.CourseActivity;
 import com.ashpex.portality.R;
-import com.ashpex.portality.adapter.CourseAdapter;
-import com.ashpex.portality.adapter.ForumAdapter;
-import com.ashpex.portality.adapter.UserCourseAdapter;
+import com.ashpex.portality.adapter.UserCourseForumAdapter;
 import com.ashpex.portality.api.ApiService;
-import com.ashpex.portality.model.Course;
-import com.ashpex.portality.model.UserCourse;
+import com.ashpex.portality.model.UserCourseForum;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -43,7 +39,7 @@ public class ForumFragment extends Fragment {
     private String userName;
     private String token;
     private Integer userId;
-    private UserCourseAdapter userCourseAdapter;
+    private UserCourseForumAdapter userCourseAdapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -70,11 +66,12 @@ public class ForumFragment extends Fragment {
         token = sharedPref.getString("token", "null");
         userId = sharedPref.getInt("user_id", 0);
 
-        ApiService.apiService.getUserCourse(userId, token).enqueue(new Callback<List<UserCourse>>() {
+        ApiService.apiService.getUserCourse(userId, token).enqueue(new Callback<List<UserCourseForum>>() {
             @Override
-            public void onResponse(Call<List<UserCourse>> call, Response<List<UserCourse>> response) {
+            public void onResponse(Call<List<UserCourseForum>> call, Response<List<UserCourseForum>> response) {
                 if(response.code() == 200) {
-                    List<UserCourse> mlist = response.body();
+                    List<UserCourseForum> mlist = response.body();
+
                     userCourseAdapter.setList(mlist);
                     ryc_forum.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
                     ryc_forum.setAdapter(userCourseAdapter);
@@ -82,7 +79,7 @@ public class ForumFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<UserCourse>> call, Throwable t) {
+            public void onFailure(Call<List<UserCourseForum>> call, Throwable t) {
 
             }
         });
@@ -108,7 +105,7 @@ public class ForumFragment extends Fragment {
         layout_fee_forum = view.findViewById(R.id.layout_fee_forum);
         ryc_forum = view.findViewById(R.id.ryc_forum);
 
-        userCourseAdapter = new UserCourseAdapter();
+        userCourseAdapter = new UserCourseForumAdapter();
     }
 
 }

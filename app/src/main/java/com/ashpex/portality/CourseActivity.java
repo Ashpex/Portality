@@ -32,13 +32,24 @@ public class CourseActivity extends AppCompatActivity {
     private ImageButton btnBack_course;
     private CourseAdapter courseAdapter;
     private List<Course> listCourse;
+    private String userName ;
+    private String token ;
+    private int userId ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
         mappingControls();
+        addData();
         addEvents();
 
+    }
+
+    private void addData() {
+        SharedPreferences sharedPref = this.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        userName = sharedPref.getString("user_name", "null");
+        token = sharedPref.getString("token", "null");
+        userId = sharedPref.getInt("user_id", 0);
     }
 
     private void addEvents() {
@@ -56,7 +67,8 @@ public class CourseActivity extends AppCompatActivity {
         ProgressDialog mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setMessage("Loading, please wait...");
         mProgressDialog.show();
-        ApiService.apiService.getCourse(0).enqueue(new Callback<List<Course>>() {
+
+        ApiService.apiService.getAllUserCourse(userId, token).enqueue(new Callback<List<Course>>() {
             @Override
             public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
                 if(response.code()==200) {

@@ -3,7 +3,7 @@ package com.ashpex.portality.api;
 import com.ashpex.portality.model.Course;
 import com.ashpex.portality.model.LoginRequest;
 import com.ashpex.portality.model.LoginStatus;
-import com.ashpex.portality.model.UserCourse;
+import com.ashpex.portality.model.UserCourseForum;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -25,16 +25,18 @@ public interface ApiService {
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://intro2se-api.herokuapp.com")
+            .baseUrl("https://intro2se-api.herokuapp.com")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiService.class);
 
     @POST("/user/login")
     Call<LoginStatus> loginAction(@Body LoginRequest loginRequest);
-
-    @GET("/course/all?")
-    Call<List<Course>> getCourse(@Query("page") Integer page);
+    @GET("/user/{userId}/allCourses")
+    Call<List<Course>> getAllUserCourse(@Path("userId") Integer userId, @Header("auth") String token);
     @GET("/user/{userId}/courses")
-    Call<List<UserCourse>> getUserCourse(@Path("userId") Integer userId, @Header("auth") String token);
+    Call<List<UserCourseForum>> getUserCourse(@Path("userId") Integer userId, @Header("auth") String token);
+
+    @GET("/course/all")
+    Call<List<Course>> getAllCourse(@Query("page") int page);
 }

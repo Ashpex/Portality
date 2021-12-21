@@ -1,11 +1,13 @@
 package com.ashpex.portality.model;
 
-public class UserCourse {
+public class UserCourseForum {
     private String course_name;
-    private Integer subject_id;
+    private String teacher_name;
+    private int course_id;
+    private int subject_id;
     private String time_start;
     private String time_end;
-    private Integer day_study;
+    private int day_study;
 
     public String getCourse_name() {
         return course_name;
@@ -15,11 +17,27 @@ public class UserCourse {
         this.course_name = course_name;
     }
 
-    public Integer getSubject_id() {
+    public String getTeacher_name() {
+        return teacher_name;
+    }
+
+    public void setTeacher_name(String teacher_name) {
+        this.teacher_name = teacher_name;
+    }
+
+    public int getCourse_id() {
+        return course_id;
+    }
+
+    public void setCourse_id(int course_id) {
+        this.course_id = course_id;
+    }
+
+    public int getSubject_id() {
         return subject_id;
     }
 
-    public void setSubject_id(Integer subject_id) {
+    public void setSubject_id(int subject_id) {
         this.subject_id = subject_id;
     }
 
@@ -39,11 +57,11 @@ public class UserCourse {
         this.time_end = time_end;
     }
 
-    public Integer getDay_study() {
+    public int getDay_study() {
         return day_study;
     }
 
-    public void setDay_study(Integer day_study) {
+    public void setDay_study(int day_study) {
         this.day_study = day_study;
     }
 }

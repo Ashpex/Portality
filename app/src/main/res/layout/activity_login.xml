@@ -57,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginStart="11dp"
                 android:layout_marginEnd="11dp"
+                android:textColor="@color/black"
                 android:drawableEnd="@drawable/ic_outline_email"
                 android:layout_height="wrap_content"/>
 
@@ -69,6 +70,7 @@
                 android:layout_marginStart="11dp"
                 android:layout_marginEnd="11dp"
                 android:drawableEnd="@drawable/ic_outline_lock"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"/>
 
             <Button

@@ -1,5 +1,6 @@
 package com.ashpex.portality.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,8 +56,12 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         }
         public void bindData(Course pos) {
             nameCourse_item.setText(pos.getCourse_name());
-            nameTeacher_item.setText(String.valueOf(pos.getSubject_id()));
-            btnRegister.setBackgroundResource(R.drawable.ic_finished);
+            nameTeacher_item.setText("Giáo viên: " + pos.getTeacher_name());
+            Log.d("Alo", String.valueOf(pos.getCurr_state()));
+            if(pos.getCurr_state() == 1)
+            btnRegister.setBackgroundResource(R.drawable.ic_unfinished);
+            else if(pos.getCurr_state() == 2)
+                btnRegister.setBackgroundResource(R.drawable.ic_finished);
         }
     }
 }
