@@ -22,6 +22,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ashpex.portality.fragment.ForumFragment;
 import com.ashpex.portality.fragment.SignUpCourseFragment;
@@ -41,15 +43,49 @@ public class MainScreen extends AppCompatActivity {
     private Intent intent;
     private InfoUser infoUser;
     private BottomNavigationView bottomNavigation;
+    private TextView user_name;
+    private TextView user_email;
+    private TextView name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
         setData();
         mappingControls();
+        setHeaderBar();
         settingBottomNavigation();
         eventToolBar();
         eventNoti();
+    }
+
+    private void setHeaderBar() {
+        View headerView = navigationView.getHeaderView(0);
+        user_name = headerView.findViewById(R.id.user_name);
+        user_email = headerView.findViewById(R.id.user_email);
+        name = headerView.findViewById(R.id.name);
+
+        SharedPreferences sharedPref = this.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        String _name = sharedPref.getString("user_name", "null");
+        String ref = "";
+        for(int i=_name.length() - 1;i>=0;i--) {
+
+            if(_name.charAt(i) == ' ' ) {
+                if(i == _name.length() - 1)
+                    continue;
+                if(ref.length()<2) {
+                    ref = String.valueOf(_name.charAt(i+1)) + ref;
+                }
+                else
+                    break;
+            }
+        }
+        if(ref.length() == 0) {
+            ref = String.valueOf(_name.charAt(0));
+        }
+
+        name.setText(ref);
+        user_name.setText(sharedPref.getString("user_name", "null"));
+        user_email.setText(sharedPref.getString("user_email", "null"));
     }
 
     private void settingBottomNavigation() {
@@ -58,6 +94,7 @@ public class MainScreen extends AppCompatActivity {
 
     private void setData() {
         intent = getIntent();
+
     }
 
     private void eventNoti() {
@@ -180,5 +217,6 @@ public class MainScreen extends AppCompatActivity {
         frMain = findViewById(R.id.frMain);
         btnNoti = findViewById(R.id.btnNoti);
         bottomNavigation = findViewById(R.id.bottomNavigation);
+
     }
 }
