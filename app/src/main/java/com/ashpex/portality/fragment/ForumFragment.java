@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,8 +22,10 @@ import com.ashpex.portality.CourseActivity;
 import com.ashpex.portality.R;
 import com.ashpex.portality.adapter.UserCourseForumAdapter;
 import com.ashpex.portality.api.ApiService;
-import com.ashpex.portality.model.UserCourseForum;
+import com.ashpex.portality.model.UserCourseOnStudying;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -66,12 +70,12 @@ public class ForumFragment extends Fragment {
         token = sharedPref.getString("token", "null");
         userId = sharedPref.getInt("user_id", 0);
 
-        ApiService.apiService.getUserCourse(userId, token).enqueue(new Callback<List<UserCourseForum>>() {
+        ApiService.apiService.getUserCourse(userId, token).enqueue(new Callback<List<UserCourseOnStudying>>() {
             @Override
-            public void onResponse(Call<List<UserCourseForum>> call, Response<List<UserCourseForum>> response) {
+            public void onResponse(Call<List<UserCourseOnStudying>> call, Response<List<UserCourseOnStudying>> response) {
                 if(response.code() == 200) {
-                    List<UserCourseForum> mlist = response.body();
-
+                    List<UserCourseOnStudying> mlist = response.body();
+                    filterList(mlist);
                     userCourseAdapter.setList(mlist);
                     ryc_forum.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
                     ryc_forum.setAdapter(userCourseAdapter);
@@ -79,10 +83,16 @@ public class ForumFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<UserCourseForum>> call, Throwable t) {
-
+            public void onFailure(Call<List<UserCourseOnStudying>> call, Throwable t) {
+                Log.d("alo", "Cant connect");
             }
         });
+    }
+
+    private void filterList(List<UserCourseOnStudying> mlist) {
+        Date currentTime = Calendar.getInstance().getTime();
+        int day = currentTime.getDay();
+        mlist.removeIf(i -> i.getDay_study() == day);
     }
 
     private void addEvents() {

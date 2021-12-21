@@ -9,17 +9,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ashpex.portality.R;
-import com.ashpex.portality.model.UserCourseForum;
+import com.ashpex.portality.model.UserCourseOnStudying;
 
 import java.util.List;
 
 public class UserCourseForumAdapter extends RecyclerView.Adapter<UserCourseForumAdapter.UserCourseViewHolder>{
-    private List<UserCourseForum> mlist;
+    private List<UserCourseOnStudying> mlist;
 
     public void notifyData() {
         notifyDataSetChanged();
     }
-    public void setList(List<UserCourseForum> list) {
+    public void setList(List<UserCourseOnStudying> list) {
         mlist = list;
         notifyDataSetChanged();
     }
@@ -52,7 +52,7 @@ public class UserCourseForumAdapter extends RecyclerView.Adapter<UserCourseForum
             timeCourse = itemView.findViewById(R.id.timeCourse);
             nameTeacher = itemView.findViewById(R.id.nameTeacher);
         }
-        public void bindData(UserCourseForum pos) {
+        public void bindData(UserCourseOnStudying pos) {
             nameCourse.setText(pos.getCourse_name());
             timeCourse.setText("Thời gian: "+ pos.getTime_start().substring(0,4)+ " - " + pos.getTime_end().substring(0,4));
             nameTeacher.setText("Giáo viên: " + pos.getTeacher_name());

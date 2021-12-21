@@ -3,7 +3,7 @@ package com.ashpex.portality.api;
 import com.ashpex.portality.model.Course;
 import com.ashpex.portality.model.LoginRequest;
 import com.ashpex.portality.model.LoginStatus;
-import com.ashpex.portality.model.UserCourseForum;
+import com.ashpex.portality.model.UserCourseOnStudying;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -35,7 +35,7 @@ public interface ApiService {
     @GET("/user/{userId}/allCourses")
     Call<List<Course>> getAllUserCourse(@Path("userId") Integer userId, @Header("auth") String token);
     @GET("/user/{userId}/courses")
-    Call<List<UserCourseForum>> getUserCourse(@Path("userId") Integer userId, @Header("auth") String token);
+    Call<List<UserCourseOnStudying>> getUserCourse(@Path("userId") Integer userId, @Header("auth") String token);
 
     @GET("/course/all")
     Call<List<Course>> getAllCourse(@Query("page") int page);

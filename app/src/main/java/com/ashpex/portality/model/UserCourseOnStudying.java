@@ -1,6 +1,6 @@
 package com.ashpex.portality.model;
 
-public class UserCourseForum {
+public class UserCourseOnStudying {
     private String course_name;
     private String teacher_name;
     private int course_id;
