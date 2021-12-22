@@ -1,6 +1,6 @@
 package com.ashpex.portality.model;
 
-public class CourseSigned {
+public class Course {
     private Integer course_id;
     private String course_name;
     private String subject_name ;

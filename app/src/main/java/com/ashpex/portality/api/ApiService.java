@@ -38,5 +38,6 @@ public interface ApiService {
     Call<List<UserCourseOnStudying>> getUserCourse(@Path("userId") Integer userId, @Header("auth") String token);
     @GET("/course/all")
     Call<List<CourseSigned>> getAllCourse(@Query("page") int page);
-
+//    @GET("/course/search")
+//    Call<List<>>
 }

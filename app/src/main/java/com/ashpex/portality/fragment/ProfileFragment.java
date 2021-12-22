@@ -1,5 +1,6 @@
 package com.ashpex.portality.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,12 +46,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        txtCountCourse.setText("0");
-        txtName.setText(infoUser.getUser_name());
-        email_profile.setText(infoUser.getUser_name());
-        sex_profile.setText(infoUser.getGender());
-        dob_profile.setText(infoUser.getBirthday());
-        address_profile.setText(infoUser.getAddress());
+        addEvents();
     }
 
     private void getData() {
@@ -63,11 +60,14 @@ public class ProfileFragment extends Fragment {
         infoUser.setAddress(sharedPref.getString("user_address", "null"));
         infoUser.setBirthday(sharedPref.getString("user_birthday", "null"));
         infoUser.setPassword(sharedPref.getString("user_password", "null"));
+        infoUser.setCount_course(sharedPref.getInt("count_course", 0));
+        Log.d("count course",String.valueOf(infoUser.getCount_course()));
     }
 
+    @SuppressLint("SetTextI18n")
     private void addEvents() {
         txtName.setText(infoUser.getUser_name());
-        txtCountCourse.setText("0");
+        txtCountCourse.setText("Đã tham gia "+ infoUser.getCount_course()+ " khóa học");
         email_profile.setText(infoUser.getEmail());
         sex_profile.setText(infoUser.getGender());
         dob_profile.setText(infoUser.getBirthday());

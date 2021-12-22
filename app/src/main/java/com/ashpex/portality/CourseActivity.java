@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -29,6 +31,7 @@ public class CourseActivity extends AppCompatActivity {
     private String userName ;
     private String token ;
     private int userId ;
+    SharedPreferences sharedPref ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +43,7 @@ public class CourseActivity extends AppCompatActivity {
     }
 
     private void addData() {
-        SharedPreferences sharedPref = this.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        sharedPref = this.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         userName = sharedPref.getString("user_name", "null");
         token = sharedPref.getString("token", "null");
         userId = sharedPref.getInt("user_id", 0);
@@ -67,6 +70,9 @@ public class CourseActivity extends AppCompatActivity {
             public void onResponse(Call<List<CourseSigned>> call, Response<List<CourseSigned>> response) {
                 if(response.code()==200) {
                     listCourseSigned = response.body();
+                    CountCourseFinished countCourseFinished = new CountCourseFinished();
+                    countCourseFinished.execute();
+
                     courseAdapter.setList(listCourseSigned);
                     ryc_course_activity.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
                     ryc_course_activity.setAdapter(courseAdapter);
@@ -92,5 +98,26 @@ public class CourseActivity extends AppCompatActivity {
         courseAdapter.setList(listCourseSigned);
     }
 
+    class CountCourseFinished extends AsyncTask<Void, Integer, Integer> {
 
+
+        @Override
+        protected Integer doInBackground(Void... voids) {
+
+            int count =0;
+            for(CourseSigned i : listCourseSigned) {
+                if(i.getCurr_state() == 2)
+                    count ++;
+            }
+            Log.d("alo", String.valueOf(count));
+            return count;
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt("count_course", integer);
+            editor.apply();
+        }
+    }
 }

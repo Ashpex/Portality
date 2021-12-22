@@ -184,7 +184,8 @@ public class MainScreen extends AppCompatActivity {
             case R.id.menuExit:{
                 drawerLayout.closeDrawers();
                 SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
-                sharedPref.edit().clear().apply();
+                sharedPref.edit().clear().commit();
+
                 finish();
             }
             case R.id.menuBotHome:{
@@ -203,7 +204,6 @@ public class MainScreen extends AppCompatActivity {
             }
             default: {
                 drawerLayout.closeDrawers();
-
                 return;
             }
         }

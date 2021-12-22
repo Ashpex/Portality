@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString("user_name", user.getUser_name());
         editor.putString("user_email", user.getEmail());
         editor.putString("user_gender", user.getGender());
-        editor.putString("user_birthday", user.getBirthday());
+        editor.putString("user_birthday", user.getBirthday().substring(0, 10));
         editor.putString("user_address", user.getAddress());
         editor.putString("token", token);
         editor.apply();

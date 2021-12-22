@@ -9,6 +9,15 @@ public class InfoUser {
     private String gender;
     private String birthday;
     private String address;
+    private int count_course;
+
+    public int getCount_course() {
+        return count_course;
+    }
+
+    public void setCount_course(int count_course) {
+        this.count_course = count_course;
+    }
 
     public Integer get_id() {
         return _id;
