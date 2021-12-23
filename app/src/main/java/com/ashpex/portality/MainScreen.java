@@ -25,6 +25,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ashpex.portality.fragment.CalendarFragment;
 import com.ashpex.portality.fragment.ForumFragment;
 import com.ashpex.portality.fragment.SignUpCourseFragment;
 import com.ashpex.portality.fragment.TaskFragment;
@@ -168,6 +169,9 @@ public class MainScreen extends AppCompatActivity {
 
 
             case R.id.menuSchedule:{
+                FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frMain, new CalendarFragment());
+                transaction.commit();
                 drawerLayout.closeDrawers();
                 return;
             }
