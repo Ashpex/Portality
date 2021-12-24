@@ -1,5 +1,7 @@
 package com.ashpex.portality.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,12 +9,15 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ashpex.portality.R;
 import com.ashpex.portality.adapter.UserCourseOnStudyingAdapter;
+import com.ashpex.portality.api.ApiService;
+import com.ashpex.portality.model.UserCourseOnStudying;
 import com.github.tibolte.agendacalendarview.AgendaCalendarView;
 import com.github.tibolte.agendacalendarview.CalendarPickerController;
 import com.github.tibolte.agendacalendarview.models.BaseCalendarEvent;
@@ -22,13 +27,22 @@ import com.github.tibolte.agendacalendarview.models.DayItem;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CalendarFragment extends Fragment {
 
     private AgendaCalendarView mAgendaCalendarView;
     private View view;
+    private String userName;
+    private String token;
+    private Integer userId;
+    List<UserCourseOnStudying> mlist;
 
     @Nullable
     @Override
@@ -73,6 +87,9 @@ public class CalendarFragment extends Fragment {
     }
 
     private void mockList(List<CalendarEvent> eventList) {
+
+        getData(mlist);
+
         Calendar startTime1 = Calendar.getInstance();
         Calendar endTime1 = Calendar.getInstance();
         endTime1.add(Calendar.MONTH, 1);
@@ -88,6 +105,45 @@ public class CalendarFragment extends Fragment {
                 R.color.darker_blue, startTime2, endTime2, true);
         eventList.add(event2);
 
+        // test api
+        /*
+        Calendar startTime3 = Calendar.getInstance();
+        startTime3.add(Calendar.DAY_OF_YEAR, 1);
+        Calendar endTime3 = Calendar.getInstance();
+        endTime3.add(Calendar.DAY_OF_YEAR, 3);
+        BaseCalendarEvent event3 = new BaseCalendarEvent(mlist.get(0).getCourse_name(),mlist.get(0).getTeacher_name(),mlist.get(0).getTeacher_name(),
+                R.color.darker_blue, startTime3, endTime3, true);
+        eventList.add(event3);
+        */
+    }
+
+    private void getData(List<UserCourseOnStudying> mlist){
+        SharedPreferences sharedPref = view.getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        userName = sharedPref.getString("user_name", "null");
+        token = sharedPref.getString("token", "null");
+        userId = sharedPref.getInt("user_id", 0);
+
+        ApiService.apiService.getUserCourse(userId, token).enqueue(new Callback<List<UserCourseOnStudying>>() {
+            @Override
+            public void onResponse(Call<List<UserCourseOnStudying>> call, Response<List<UserCourseOnStudying>> response) {
+                if(response.code() == 200) {
+                    //mlist = response.body();
+                    //filterList(mlist);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<UserCourseOnStudying>> call, Throwable t) {
+                Log.d("alo", "Cant connect");
+            }
+        });
+
+    }
+
+    private void filterList(List<UserCourseOnStudying> mlist) {
+        Date currentTime = Calendar.getInstance().getTime();
+        int day = currentTime.getDay();
+        mlist.removeIf(i -> i.getDay_study() == day);
     }
 
     private void mappingControls() {

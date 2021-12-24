@@ -9,12 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +25,7 @@ import com.ashpex.portality.R;
 import com.ashpex.portality.adapter.UserCourseOnStudyingAdapter;
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.UserCourseOnStudying;
+import com.ashpex.portality.fragment.CalendarFragment;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -103,6 +106,14 @@ public class ForumFragment extends Fragment {
             }
         });
 
+        layout_Schedule_forum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.frMain, new CalendarFragment());
+                transaction.commit();
+            }
+        });
 
     }
 
