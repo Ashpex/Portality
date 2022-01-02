@@ -3,11 +3,13 @@ package com.ashpex.portality.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +34,9 @@ import retrofit2.Response;
 public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapter.SignUpCourseViewHolder>{
     private final List<Course> mlist;
     private Context context;
+    private int type = 2;
+    private int user_id;
+
     public SignUpCourseAdapter(List<Course> list) {
         mlist = list;
     }
@@ -50,6 +55,14 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
 
     @Override
     public void onBindViewHolder(@NonNull SignUpCourseViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        SharedPreferences sharedPref = context.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        user_id = sharedPref.getInt("user_id", -1);
+        type = sharedPref.getInt("user_type", 2);
+        if(type == 1)
+            holder.btnRegister.setVisibility(View.INVISIBLE);
+        else
+            holder.btnRegister.setVisibility(View.VISIBLE);
+
         holder.bindData(mlist.get(position));
         holder.btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,34 +73,7 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
     }
 
     private void signUpCourse(Course course) {
-        SharedPreferences sharedPref = context.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
-        int user_id = sharedPref.getInt("user_id", -1);
-        JSONObject body = new JSONObject();
-        try {
-            body.put("course_name", course.getCourse_name());
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        //if(user_id >0)
-//        if(course.getCurr_state()==0) {
-//            ApiService.apiService.signUpCourseRequestStudent(user_id, body).enqueue(new Callback<Course>() {
-//                @Override
-//                public void onResponse(Call<Course> call, Response<Course> response) {
-//                    Log.d("ALo", String.valueOf(response.code()));
-//                    if(response.code()==200) {
-//                        Toast.makeText(context, "Đăng ký thành công", Toast.LENGTH_SHORT);
-//                    }
-//                    else
-//                        Toast.makeText(context, "Đăng ký không thành công", Toast.LENGTH_SHORT);
-//                }
-//
-//                @Override
-//                public void onFailure(Call<Course> call, Throwable t) {
-//                    Toast.makeText(context, "Đăng ký không thành công", Toast.LENGTH_SHORT);
-//                }
-//            });
-//        }
     }
 
     @Override
@@ -100,13 +86,16 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
         private final TextView nameCourse_item;
         private final TextView nameTeacher_item;
         public final ImageButton btnRegister;
+        private final LinearLayout layout_color;
         public SignUpCourseViewHolder(@NonNull View itemView) {
             super(itemView);
             nameCourse_item = itemView.findViewById(R.id.nameCourse_item);
             nameTeacher_item = itemView.findViewById(R.id.nameTeacher_item);
             btnRegister = itemView.findViewById(R.id.btnRegister);
+            layout_color = itemView.findViewById(R.id.layout_color);
         }
         public void bindData(Course pos) {
+            layout_color.setBackgroundColor(Color.parseColor(pos.getColor()));
             nameCourse_item.setText(pos.getCourse_name());
             nameTeacher_item.setText("Giáo viên: " + pos.getTeacher_name());
             if(pos.getCurr_state()==0)

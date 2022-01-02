@@ -20,12 +20,13 @@
             android:textStyle="bold"
             android:textColor="@color/black"/>
         <ImageView
+            android:id="@+id/btnAddNew"
             android:layout_margin="5dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/ic_filter_sign_up"/>
+            android:background="@drawable/ic_add_c"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ryc_sign_up"
