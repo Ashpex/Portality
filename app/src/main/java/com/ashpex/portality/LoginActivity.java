@@ -149,7 +149,6 @@ public class LoginActivity extends AppCompatActivity {
         btnSignUp_Login = (Button) findViewById(R.id.btnSignUp_Login);
         txtUserEmail_Login = (EditText) findViewById(R.id.txtUserEmail_Login);
         txtPassword_Login = (EditText) findViewById(R.id.txtPassword_Login);
-
     }
 
 }
