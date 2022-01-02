@@ -37,7 +37,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 
-public class MainScreen extends AppCompatActivity {
+public class MainScreen extends AppCompatActivity implements ActionForumInterface {
     private DrawerLayout drawerLayout;
     private androidx.appcompat.widget.Toolbar toolBarUser;
     private NavigationView navigationView;
@@ -180,7 +180,9 @@ public class MainScreen extends AppCompatActivity {
             case R.id.menuHome:{
                 bottomNavigation.getMenu().findItem(R.id.menuBotHome).setChecked(true);
                 FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frMain, new ForumFragment());
+                ForumFragment f = new ForumFragment();
+                f.setActionForumInterface(this);
+                transaction.replace(R.id.frMain, f);
                 transaction.commit();
                 drawerLayout.closeDrawers();
                 return;
@@ -256,5 +258,13 @@ public class MainScreen extends AppCompatActivity {
         btnNoti = findViewById(R.id.btnNoti);
         bottomNavigation = findViewById(R.id.bottomNavigation);
 
+    }
+
+    @Override
+    public void setChecked(int pos) {
+        if(pos==0)
+            navigationView.getMenu().findItem(R.id.menuSchedule).setChecked(true);
+        if(pos==1)
+            navigationView.getMenu().findItem(R.id.menuTask).setChecked(true);
     }
 }

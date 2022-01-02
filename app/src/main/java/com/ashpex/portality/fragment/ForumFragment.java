@@ -21,12 +21,14 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ashpex.portality.ActionForumInterface;
 import com.ashpex.portality.CourseActivity;
 import com.ashpex.portality.R;
 import com.ashpex.portality.adapter.UserCourseOnStudyingAdapter;
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.UserCourseOnStudying;
 import com.ashpex.portality.fragment.CalendarFragment;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -49,13 +51,21 @@ public class ForumFragment extends Fragment {
     private Integer userId;
     private UserCourseOnStudyingAdapter userCourseAdapter;
     private TextView txtForum;
+    private ActionForumInterface actionForumInterface;
+
+    public void setActionForumInterface(ActionForumInterface actionForumInterface) {
+        this.actionForumInterface = actionForumInterface;
+    }
+
+    NavigationView navigationView;
     private int type;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         view = inflater.inflate(R.layout.fragment_forum, container, false);
-
+        navigationView = LayoutInflater.from(getContext()).inflate(R.layout.main_screen, null)
+                .findViewById(R.id.nav_view_main);
         mappingControls();
         getData();
         addEvents();
@@ -118,12 +128,17 @@ public class ForumFragment extends Fragment {
         layout_Schedule_forum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                actionForumInterface.setChecked(0); //0 is schedule
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.frMain, new CalendarFragment());
                 transaction.commit();
             }
         });
 
+    }
+
+    private void setCheckedSchedule() {
+        navigationView.getMenu().findItem(R.id.menuSchedule).setChecked(true);
     }
 
     private void mappingControls() {
