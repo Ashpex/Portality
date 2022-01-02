@@ -124,17 +124,16 @@ public class ForumFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        
 
         layout_Schedule_forum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                actionForumInterface.setChecked(0); //0 is schedule
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.frMain, new CalendarFragment());
                 transaction.commit();
             }
         });
-
     }
 
     private void setCheckedSchedule() {
