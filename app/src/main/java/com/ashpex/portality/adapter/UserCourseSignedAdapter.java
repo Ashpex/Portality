@@ -17,7 +17,12 @@ import com.ashpex.portality.model.CourseSigned;
 import java.util.List;
 
 public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSignedAdapter.CourseViewHolder>{
-    private  List<CourseSigned> mlist;
+    private List<CourseSigned> mlist;
+    private int state = 0;
+
+    public void setState(int state) {
+        this.state = state;
+    }
 
     public void notifyData() {
         notifyDataSetChanged();
@@ -37,6 +42,11 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
         holder.bindData(mlist.get(position));
+        if(state == 1) {
+            holder.btnRegister.setVisibility(View.INVISIBLE);
+        }
+        else
+            holder.btnRegister.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -48,7 +58,7 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
 
         private final TextView nameCourse_item;
         private final TextView nameTeacher_item;
-        private final ImageButton btnRegister;
+        public final ImageButton btnRegister;
         private final LinearLayout layout_color;
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -58,8 +68,9 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
             layout_color = itemView.findViewById(R.id.layout_color);
         }
         public void bindData(CourseSigned pos) {
+            if(pos.getTeacher_name() == null)
+                nameTeacher_item.setText("Ngày bắt đầu: " + pos.getDay_start());
             nameCourse_item.setText(pos.getCourse_name());
-            nameTeacher_item.setText("Giáo viên: " + pos.getTeacher_name());
             if(pos.getCurr_state() == 2)
                 btnRegister.setBackgroundResource(R.drawable.ic_finished);
             else

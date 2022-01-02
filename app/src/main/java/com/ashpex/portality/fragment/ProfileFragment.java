@@ -1,6 +1,7 @@
 package com.ashpex.portality.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,9 +16,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ashpex.portality.R;
+import com.ashpex.portality.api.ApiService;
+import com.ashpex.portality.model.CourseSigned;
 import com.ashpex.portality.model.InfoUser;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ProfileFragment extends Fragment {
@@ -60,8 +70,21 @@ public class ProfileFragment extends Fragment {
         infoUser.setAddress(sharedPref.getString("user_address", "null"));
         infoUser.setBirthday(sharedPref.getString("user_birthday", "null"));
         infoUser.setPassword(sharedPref.getString("user_password", "null"));
-        infoUser.setCount_course(sharedPref.getInt("count_course", 0));
-        Log.d("count course",String.valueOf(infoUser.getCount_course()));
+
+        ApiService.apiService.getAllUserCourseSigned(infoUser.get_id(), sharedPref.getString("token", "null")).enqueue(new Callback<List<CourseSigned>>() {
+            @Override
+            public void onResponse(Call<List<CourseSigned>> call, Response<List<CourseSigned>> response) {
+                if(response.code()==200) {
+                    if(infoUser.getType()==2)
+                    txtCountCourse.setText("Đã tham gia "+ response.body().size() +" khóa học");
+                    else
+                        txtCountCourse.setText("Đã tạo "+ response.body().size() +" khóa học");
+                }
+            }
+            @Override
+            public void onFailure(Call<List<CourseSigned>> call, Throwable t) {
+            }
+        });
     }
 
     @SuppressLint("SetTextI18n")
