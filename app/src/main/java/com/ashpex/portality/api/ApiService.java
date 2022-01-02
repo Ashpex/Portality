@@ -1,5 +1,6 @@
 package com.ashpex.portality.api;
 
+import com.ashpex.portality.model.Course;
 import com.ashpex.portality.model.CourseSigned;
 import com.ashpex.portality.model.LoginRequest;
 import com.ashpex.portality.model.LoginStatus;
@@ -9,12 +10,15 @@ import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -38,6 +42,11 @@ public interface ApiService {
     Call<List<UserCourseOnStudying>> getUserCourse(@Path("userId") Integer userId, @Header("auth") String token);
     @GET("/course/all")
     Call<List<CourseSigned>> getAllCourse(@Query("page") int page);
-//    @GET("/course/search")
-//    Call<List<>>
+
+    @GET("/course/available")
+    Call<List<Course>> getAvailableCourse(@Query("page") int page);
+
+    @Headers({"Content-Type: application/json"})
+    @POST("/course/{user_id}/sign")
+    Call<RequestBody> signUpCourseRequestStudent(@Path("user_id") int user_id, @Body RequestBody body, @Header("auth") String token);
 }

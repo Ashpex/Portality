@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:padding="20dp">
         <TextView
+            android:id="@+id/txtView"
             android:layout_width="131dp"
             android:layout_height="31dp"
             android:text="Đã đăng ký"
@@ -39,17 +40,12 @@
             android:textColor="@color/black"
             android:textStyle="bold"/>
         <ImageButton
+            android:id="@+id/btnViewAll"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="150dp"
+            android:layout_marginStart="200dp"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:background="@drawable/ic_filter_sign_up"/>
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_menu_out"/>
 
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView

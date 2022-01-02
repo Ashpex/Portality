@@ -15,6 +15,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,6 +33,7 @@ import com.ashpex.portality.fragment.TaskFragment;
 import com.ashpex.portality.fragment.ProfileFragment;
 import com.ashpex.portality.model.InfoUser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -47,6 +49,8 @@ public class MainScreen extends AppCompatActivity {
     private TextView user_name;
     private TextView user_email;
     private TextView name;
+    private int type ;
+    FloatingActionButton btnSignUP;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +61,22 @@ public class MainScreen extends AppCompatActivity {
         settingBottomNavigation();
         eventToolBar();
         eventNoti();
+
+        btnSignUP = findViewById(R.id.btnSignUP);
+        btnSignUP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                action();
+            }
+        });
+    }
+
+    private void action() {
+        navigationView.getMenu().findItem(R.id.menuCourseSignUp).setChecked(true);
+        FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frMain, new SignUpCourseFragment());
+        transaction.commit();
+        drawerLayout.closeDrawers();
     }
 
     private void setHeaderBar() {
@@ -67,6 +87,8 @@ public class MainScreen extends AppCompatActivity {
 
         SharedPreferences sharedPref = this.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         String _name = sharedPref.getString("user_name", "null");
+        type = sharedPref.getInt("user_type", 1);
+
         String ref = "";
         for(int i=_name.length() - 1;i>=0;i--) {
 
@@ -129,6 +151,18 @@ public class MainScreen extends AppCompatActivity {
             }
         });
 
+        String temp = "";
+        String temp1 = "";
+        if(type==1) {
+            temp = "Tạo học phần";
+            temp1 ="Lương";
+        }
+        else {
+            temp = "Đăng ký học phần";
+            temp1 ="Học phí";
+        }
+        navigationView.getMenu().findItem(R.id.menuCourseSignUp).setTitle(temp);
+        navigationView.getMenu().findItem(R.id.menuFee).setTitle(temp1);
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -136,13 +170,12 @@ public class MainScreen extends AppCompatActivity {
                 return true;
             }
         });
+
+
     }
-
-
 
     private void eventClickNav(MenuItem item) {
         item.setChecked(true);
-
         switch (item.getItemId()){
             case R.id.menuHome:{
                 bottomNavigation.getMenu().findItem(R.id.menuBotHome).setChecked(true);
@@ -211,6 +244,7 @@ public class MainScreen extends AppCompatActivity {
                 return;
             }
         }
+
 
     }
 

@@ -175,6 +175,7 @@
             </LinearLayout>
         </HorizontalScrollView>
         <TextView
+            android:id="@+id/txtForum"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="Lịch học hôm nay"

@@ -13,7 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.ashpex.portality.adapter.CourseAdapter;
+import com.ashpex.portality.adapter.UserCourseSignedAdapter;
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.CourseSigned;
 
@@ -26,7 +26,7 @@ import retrofit2.Response;
 public class CourseActivity extends AppCompatActivity {
     private RecyclerView ryc_course_activity;
     private ImageButton btnBack_course;
-    private CourseAdapter courseAdapter;
+    private UserCourseSignedAdapter userCourseSignedAdapter;
     private List<CourseSigned> listCourseSigned;
     private String userName ;
     private String token ;
@@ -73,9 +73,9 @@ public class CourseActivity extends AppCompatActivity {
                     CountCourseFinished countCourseFinished = new CountCourseFinished();
                     countCourseFinished.execute();
 
-                    courseAdapter.setList(listCourseSigned);
+                    userCourseSignedAdapter.setList(listCourseSigned);
                     ryc_course_activity.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-                    ryc_course_activity.setAdapter(courseAdapter);
+                    ryc_course_activity.setAdapter(userCourseSignedAdapter);
                 }
                 mProgressDialog.cancel();
             }
@@ -89,13 +89,13 @@ public class CourseActivity extends AppCompatActivity {
     private void mappingControls() {
         ryc_course_activity = findViewById(R.id.ryc_course_activity);
         btnBack_course = findViewById(R.id.btnBack_course);
-        courseAdapter = new CourseAdapter();
+        userCourseSignedAdapter = new UserCourseSignedAdapter();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        courseAdapter.setList(listCourseSigned);
+        userCourseSignedAdapter.setList(listCourseSigned);
     }
 
     class CountCourseFinished extends AsyncTask<Void, Integer, Integer> {

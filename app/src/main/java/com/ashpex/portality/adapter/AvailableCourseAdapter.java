@@ -12,10 +12,10 @@ import com.ashpex.portality.R;
 
 import java.util.List;
 
-public class CourseOnStudyingAdapter extends RecyclerView.Adapter<CourseOnStudyingAdapter.ForumViewHolder> {
+public class AvailableCourseAdapter extends RecyclerView.Adapter<AvailableCourseAdapter.ForumViewHolder> {
     @NonNull
     private List<String> mlist;
-    public CourseOnStudyingAdapter(List<String> list) {
+    public AvailableCourseAdapter(List<String> list) {
         mlist = list;
     }
     @Override

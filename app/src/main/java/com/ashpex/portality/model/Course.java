@@ -4,13 +4,22 @@ public class Course {
     private Integer course_id;
     private String course_name;
     private String subject_name ;
+    private Integer subject_id ;
     private String time_start;
     private String time_end;
     private Integer day_study;
-    private int curr_state;
+    private int curr_state = 0;
     private String teacher_name;
     private String color;
     private String fee = "$0";
+
+    public Integer getSubject_id() {
+        return subject_id;
+    }
+
+    public void setSubject_id(Integer subject_id) {
+        this.subject_id = subject_id;
+    }
 
     public String getFee() {
         return fee;

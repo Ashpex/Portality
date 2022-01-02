@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,6 +48,8 @@ public class ForumFragment extends Fragment {
     private String token;
     private Integer userId;
     private UserCourseOnStudyingAdapter userCourseAdapter;
+    private TextView txtForum;
+    private int type;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -72,6 +75,12 @@ public class ForumFragment extends Fragment {
         userName = sharedPref.getString("user_name", "null");
         token = sharedPref.getString("token", "null");
         userId = sharedPref.getInt("user_id", 0);
+        type = sharedPref.getInt("user_type", 0);
+        String temp = "Lịch học hôm nay";
+        if(type == 1) {
+            temp = "Lịch dạy hôm nay";
+        }
+        txtForum.setText(temp);
 
         ApiService.apiService.getUserCourse(userId, token).enqueue(new Callback<List<UserCourseOnStudying>>() {
             @Override
@@ -94,7 +103,7 @@ public class ForumFragment extends Fragment {
     private void filterList(List<UserCourseOnStudying> mlist) {
         Date currentTime = Calendar.getInstance().getTime();
         int day = currentTime.getDay();
-        mlist.removeIf(i -> i.getDay_study() == day);
+        mlist.removeIf(i -> i.getDay_study() != day);
     }
 
     private void addEvents() {
@@ -124,7 +133,7 @@ public class ForumFragment extends Fragment {
         layout_task_forum = view.findViewById(R.id.layout_task_forum);
         layout_fee_forum = view.findViewById(R.id.layout_fee_forum);
         ryc_forum = view.findViewById(R.id.ryc_forum);
-
+        txtForum = view.findViewById(R.id.txtForum);
         userCourseAdapter = new UserCourseOnStudyingAdapter();
     }
 
@@ -143,9 +152,13 @@ public class ForumFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void unused) {
-            userCourseAdapter.setList(mlist);
-            ryc_forum.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-            ryc_forum.setAdapter(userCourseAdapter);
+            if(mlist.size() !=0) {
+                userCourseAdapter.setList(mlist);
+                ryc_forum.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+                ryc_forum.setAdapter(userCourseAdapter);
+            }
+            else
+                Toast.makeText(getContext(), "Hôm nay lịch trống", Toast.LENGTH_SHORT).show();
         }
     }
 }

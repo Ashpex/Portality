@@ -1,15 +1,12 @@
 package com.ashpex.portality.adapter;
 
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.graphics.Color;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +16,7 @@ import com.ashpex.portality.model.CourseSigned;
 
 import java.util.List;
 
-public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder>{
+public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSignedAdapter.CourseViewHolder>{
     private  List<CourseSigned> mlist;
 
     public void notifyData() {
@@ -31,7 +28,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     }
     @NonNull
     @Override
-    public CourseAdapter.CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UserCourseSignedAdapter.CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         return new CourseViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_course_sign_up, parent, false));
