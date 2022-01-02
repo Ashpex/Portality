@@ -66,6 +66,7 @@ public class CalendarFragment extends Fragment {
         CalendarPickerController calendarPickerController = new CalendarPickerController() {
             @Override
             public void onDaySelected(DayItem dayItem) {
+
             }
 
             @Override
@@ -89,13 +90,46 @@ public class CalendarFragment extends Fragment {
         mAgendaCalendarView.init(eventList, minDate, maxDate, Locale.getDefault(), calendarPickerController);
     }
 
+
+
     private void mockList(List<CalendarEvent> eventList) {
 
-        getData(mlist);
+        // get data
+        SharedPreferences sharedPref = view.getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        userName = sharedPref.getString("user_name", "null");
+        token = sharedPref.getString("token", "null");
+        userId = sharedPref.getInt("user_id", 0);
+
+        ApiService.apiService.getUserCourse(userId, token).enqueue(new Callback<List<UserCourseOnStudying>>() {
+            @Override
+            public void onResponse(Call<List<UserCourseOnStudying>> call, Response<List<UserCourseOnStudying>> response) {
+                if(response.code() == 200) {
+                    mlist = response.body();
+                    filterList(mlist);
+
+                    // test api
+                    if(mlist.size() !=0){
+                        Calendar startTime3 = Calendar.getInstance();
+                        startTime3.add(Calendar.DAY_OF_YEAR, 0);
+                        Calendar endTime3 = Calendar.getInstance();
+                        endTime3.add(Calendar.DAY_OF_YEAR, 0);
+                        filterList(mlist);
+                        BaseCalendarEvent event3 = new BaseCalendarEvent(mlist.get(0).getCourse_name(),mlist.get(0).getTeacher_name(),mlist.get(0).getTeacher_name(),
+                                R.color.darker_blue, startTime3, endTime3, true);
+                        eventList.add(event3);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<UserCourseOnStudying>> call, Throwable t) {
+                Log.d("alo", "Cant connect");
+            }
+        });
 
         Calendar startTime1 = Calendar.getInstance();
         Calendar endTime1 = Calendar.getInstance();
-        endTime1.add(Calendar.MONTH, 0);
+        endTime1.add(Calendar.MONTH, -2);
         BaseCalendarEvent event1 = new BaseCalendarEvent("Lập trình hướng đối tượng", "Hồ Tuấn Thanh", "Hồ Tuấn Thanh",
                 R.color.dark_blue, startTime1, endTime1, true);
         eventList.add(event1);
@@ -108,23 +142,14 @@ public class CalendarFragment extends Fragment {
                 R.color.darker_blue, startTime2, endTime2, true);
         eventList.add(event2);
 
-        // test api
-        /*
-        Calendar startTime3 = Calendar.getInstance();
-        startTime3.add(Calendar.DAY_OF_YEAR, 1);
-        Calendar endTime3 = Calendar.getInstance();
-        endTime3.add(Calendar.DAY_OF_YEAR, 3);
-        BaseCalendarEvent event3 = new BaseCalendarEvent(mlist.get(0).getCourse_name(),mlist.get(0).getTeacher_name(),mlist.get(0).getTeacher_name(),
-                R.color.darker_blue, startTime3, endTime3, true);
-        eventList.add(event3);
-        */
+
 
 
         // Query a specific day
 
         // Initial
-        Calendar startTime3 = Calendar.getInstance();
-        Calendar endTime3 = Calendar.getInstance();
+        Calendar startTime4 = Calendar.getInstance();
+        Calendar endTime4 = Calendar.getInstance();
         int day,month,year,hour,minute;
         Date date = new Date();
         DateFormat sdf=new SimpleDateFormat("MM/dd/yyyy HH:mm:ss aa");
@@ -144,19 +169,19 @@ public class CalendarFragment extends Fragment {
 
         // Set start time and end time
         //startTime1.set(Calendar.YEAR,year);
-        startTime3.set(Calendar.MONTH,month);
-        startTime3.set(Calendar.DAY_OF_MONTH, day);
-        startTime3.set(Calendar.HOUR_OF_DAY, hour);
-        startTime3.set(Calendar.MINUTE, minute);
-        endTime3 = startTime3;
+        startTime4.set(Calendar.MONTH,month);
+        startTime4.set(Calendar.DAY_OF_MONTH, day);
+        startTime4.set(Calendar.HOUR_OF_DAY, hour);
+        startTime4.set(Calendar.MINUTE, minute);
+        endTime4 = startTime4;
 
         // Add event
         eventList.add(new BaseCalendarEvent("Specific date", "Specific date", "Specific date",
-                R.color.darker_blue, startTime3, endTime3, true));
+                R.color.darker_blue, startTime4, endTime4, true));
 
     }
 
-    private void getData(List<UserCourseOnStudying> mlist){
+    private void getData(){
         SharedPreferences sharedPref = view.getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         userName = sharedPref.getString("user_name", "null");
         token = sharedPref.getString("token", "null");
@@ -166,8 +191,8 @@ public class CalendarFragment extends Fragment {
             @Override
             public void onResponse(Call<List<UserCourseOnStudying>> call, Response<List<UserCourseOnStudying>> response) {
                 if(response.code() == 200) {
-                    //mlist = response.body();
-                    //filterList(mlist);
+                    mlist = response.body();
+                    filterList(mlist);
                 }
             }
 
