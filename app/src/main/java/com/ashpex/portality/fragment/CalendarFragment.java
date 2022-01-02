@@ -92,7 +92,7 @@ public class CalendarFragment extends Fragment {
 
         Calendar startTime1 = Calendar.getInstance();
         Calendar endTime1 = Calendar.getInstance();
-        endTime1.add(Calendar.MONTH, 1);
+        endTime1.add(Calendar.MONTH, 0);
         BaseCalendarEvent event1 = new BaseCalendarEvent("Lập trình hướng đối tượng", "Hồ Tuấn Thanh", "Hồ Tuấn Thanh",
                 R.color.dark_blue, startTime1, endTime1, true);
         eventList.add(event1);
@@ -100,7 +100,7 @@ public class CalendarFragment extends Fragment {
         Calendar startTime2 = Calendar.getInstance();
         startTime2.add(Calendar.DAY_OF_YEAR, 1);
         Calendar endTime2 = Calendar.getInstance();
-        endTime2.add(Calendar.DAY_OF_YEAR, 3);
+        endTime2.add(Calendar.DAY_OF_YEAR, 1);
         BaseCalendarEvent event2 = new BaseCalendarEvent("Nhập môn Công nghệ phần mềm", "Hồ Tuấn Thanh", "Hồ Tuấn Thanh",
                 R.color.darker_blue, startTime2, endTime2, true);
         eventList.add(event2);
