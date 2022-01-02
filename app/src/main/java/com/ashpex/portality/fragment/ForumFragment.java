@@ -124,7 +124,7 @@ public class ForumFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        
+
 
         layout_Schedule_forum.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -25,6 +25,9 @@ import com.github.tibolte.agendacalendarview.models.CalendarEvent;
 import com.github.tibolte.agendacalendarview.models.DayItem;
 
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -115,6 +118,42 @@ public class CalendarFragment extends Fragment {
                 R.color.darker_blue, startTime3, endTime3, true);
         eventList.add(event3);
         */
+
+
+        // Query a specific day
+
+        // Initial
+        Calendar startTime3 = Calendar.getInstance();
+        Calendar endTime3 = Calendar.getInstance();
+        int day,month,year,hour,minute;
+        Date date = new Date();
+        DateFormat sdf=new SimpleDateFormat("MM/dd/yyyy HH:mm:ss aa");
+
+        // Parse day
+        try {
+            date =(Date) sdf.parse("1/1/2022 10:00:00 AM");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        // Get day, month, year, hour, minute from parsing
+        day=date.getDate();
+        month=date.getMonth();
+        year=date.getYear();
+        hour=date.getHours();
+        minute=date.getMinutes();
+
+        // Set start time and end time
+        //startTime1.set(Calendar.YEAR,year);
+        startTime3.set(Calendar.MONTH,month);
+        startTime3.set(Calendar.DAY_OF_MONTH, day);
+        startTime3.set(Calendar.HOUR_OF_DAY, hour);
+        startTime3.set(Calendar.MINUTE, minute);
+        endTime3 = startTime3;
+
+        // Add event
+        eventList.add(new BaseCalendarEvent("Specific date", "Specific date", "Specific date",
+                R.color.darker_blue, startTime3, endTime3, true));
+
     }
 
     private void getData(List<UserCourseOnStudying> mlist){
