@@ -55,4 +55,7 @@ public interface ApiService {
 
     @DELETE("/course/{user_id}/unsign/{course_id}")
     Call<ResponseBody> unSignCourse(@Path("user_id") int userId, @Path("course_id") int courseId ,@Header("auth") String token);
+
+    @GET("/course/search")
+    Call<List<CourseSigned>> search(@Query("q") String searchInfo, @Query("state") int state);
 }
