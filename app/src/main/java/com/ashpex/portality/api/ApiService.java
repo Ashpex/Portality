@@ -16,6 +16,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
@@ -49,4 +50,7 @@ public interface ApiService {
     @Headers({"Content-Type: application/json"})
     @POST("/course/{user_id}/sign")
     Call<RequestBody> signUpCourseRequestStudent(@Path("user_id") int user_id, @Body RequestBody body, @Header("auth") String token);
+
+    @DELETE("/course/{user_id}/unsign/{course_id}")
+    Call<ResponseBody> unSignCourse(@Path("user_id") int userId, @Path("course_id") int courseId ,@Header("auth") String token);
 }

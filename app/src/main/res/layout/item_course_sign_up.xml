@@ -39,7 +39,7 @@
             android:id="@+id/btnRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_registered"
+            android:background="@drawable/ic_finished"
             android:layout_gravity="end"/>
     </LinearLayout>
 </LinearLayout>
