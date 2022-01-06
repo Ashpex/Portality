@@ -4,9 +4,11 @@ import com.ashpex.portality.model.Course;
 import com.ashpex.portality.model.CourseSigned;
 import com.ashpex.portality.model.LoginRequest;
 import com.ashpex.portality.model.LoginStatus;
+import com.ashpex.portality.model.SubCourseId;
 import com.ashpex.portality.model.UserCourseOnStudying;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 import java.util.List;
 
@@ -49,7 +51,7 @@ public interface ApiService {
 
     @Headers({"Content-Type: application/json"})
     @POST("/course/{user_id}/sign")
-    Call<RequestBody> signUpCourseRequestStudent(@Path("user_id") int user_id, @Body RequestBody body, @Header("auth") String token);
+    Call<ResponseBody> signUpCourseRequestStudent(@Path("user_id") int user_id, @Body SubCourseId body, @Header("auth") String token);
 
     @DELETE("/course/{user_id}/unsign/{course_id}")
     Call<ResponseBody> unSignCourse(@Path("user_id") int userId, @Path("course_id") int courseId ,@Header("auth") String token);

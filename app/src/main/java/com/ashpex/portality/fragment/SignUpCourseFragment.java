@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,6 +39,7 @@ public class SignUpCourseFragment extends Fragment implements SignUpInterface {
     private List<Course> list;
     private List<Integer> listSigned;
     private int type;
+    private String token;
     private SignUpCourseAdapter signUpCourseAdapter;
     @Nullable
     @Override
@@ -56,6 +58,7 @@ public class SignUpCourseFragment extends Fragment implements SignUpInterface {
         list = new ArrayList<>();
         SharedPreferences sharedPref = context.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         type = sharedPref.getInt("user_type", 2);
+        token = sharedPref.getString("token","null");
     }
 
     private void addEvents() {
@@ -70,16 +73,21 @@ public class SignUpCourseFragment extends Fragment implements SignUpInterface {
         ApiService.apiService.getAvailableCourse(0).enqueue(new Callback<List<Course>>() {
             @Override
             public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
-                Log.d("ALo", String.valueOf(response.code()));
                 if(response.code()==200) {
                     list.addAll(response.body());
                     rycSetUp();
+                }
+                else {
+                    if(response.message() != null)
+                    Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(getContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Course>> call, Throwable t) {
-
+                Toast.makeText(getContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -88,6 +96,7 @@ public class SignUpCourseFragment extends Fragment implements SignUpInterface {
         ryc_sign_up.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         signUpCourseAdapter = new SignUpCourseAdapter(list);
         signUpCourseAdapter.setContext(context);
+        signUpCourseAdapter.setToken(token);
         ryc_sign_up.setAdapter(signUpCourseAdapter);
         ryc_sign_up.setHasFixedSize(true);
     }

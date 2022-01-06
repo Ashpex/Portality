@@ -31,9 +31,13 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
     private int state = 0;
     private String token =" ";
     private int userId;
-
+    private int type;
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public void setUserId(Integer userId) {
@@ -66,10 +70,16 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
             holder.btnRegister.setVisibility(View.INVISIBLE);
         else
             holder.btnRegister.setVisibility(View.VISIBLE);
-        if(mlist.get(position).getCurr_state()==0) {
+
+        if(mlist.get(position).getCurr_state() == 0 && type ==2)
+            holder.btnRegister.setBackgroundResource(R.drawable.ic_registered);
+        if(mlist.get(position).getCurr_state() == 0 && type ==1)
+            holder.btnRegister.setBackgroundResource(R.drawable.ic_unregistered);
+        if(mlist.get(position).getCurr_state()==0 ) {
             holder.btnRegister.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    if(type == 2)
                     ApiService.apiService.unSignCourse(userId, mlist.get(position).getCourse_id(), token).enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -78,15 +88,24 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
                                 notifyDataSetChanged();
                                 Toast.makeText(holder.context, "Hủy đăng ký thành công", Toast.LENGTH_SHORT).show();
                             }
-                            else
-                                Log.d("ALOO", response.message());
+                            else {
+                                if(response.message()!=null)
+                                Toast.makeText(holder.context, "Hủy đăng ký thành công", Toast.LENGTH_SHORT).show();
+                                else
+                                Toast.makeText(holder.context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
+                            }
+
                         }
 
                         @Override
                         public void onFailure(Call<ResponseBody> call, Throwable t) {
-                            Toast.makeText(holder.context, "Không thể hủy đăng ký", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(holder.context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
                         }
                     });
+
+                    if(type==1) {
+
+                    }
                 }
             });
         }
@@ -120,8 +139,7 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
                 btnRegister.setBackgroundResource(R.drawable.ic_finished);
             if(pos.getCurr_state() == 1)
                 btnRegister.setBackgroundResource(R.drawable.ic_unfinished);
-            if(pos.getCurr_state() == 0)
-                btnRegister.setBackgroundResource(R.drawable.ic_registered);
+
             layout_color.setBackgroundColor(Color.parseColor(pos.getColor()));
         }
     }

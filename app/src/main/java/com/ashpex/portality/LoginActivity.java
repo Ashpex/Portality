@@ -107,7 +107,10 @@ public class LoginActivity extends AppCompatActivity {
                     loginSuccess(loginStatus.getUser());
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "Some things went wrong", Toast.LENGTH_SHORT).show();
+                    if(response.message()!=null)
+                    Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(getApplicationContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
                 }
                 mProgressDialog.cancel();
             }
@@ -117,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                 mProgressDialog.cancel();
                 Log.d("Alo", t.toString());
 
-                Toast.makeText(getApplicationContext(), "Some things went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Lỗi server", Toast.LENGTH_SHORT).show();
             }
         });
     }

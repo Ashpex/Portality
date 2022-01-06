@@ -80,9 +80,15 @@ public class ProfileFragment extends Fragment {
                     else
                         txtCountCourse.setText("Đã tạo "+ response.body().size() +" khóa học");
                 }
+                else
+                if(response.message() != null)
+                    Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onFailure(Call<List<CourseSigned>> call, Throwable t) {
+                Toast.makeText(getContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
             }
         });
     }

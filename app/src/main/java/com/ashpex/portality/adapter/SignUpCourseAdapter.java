@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ashpex.portality.R;
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.Course;
+import com.ashpex.portality.model.SubCourseId;
+import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +29,7 @@ import java.util.List;
 
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,6 +39,11 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
     private Context context;
     private int type = 2;
     private int user_id;
+    private String token;
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public SignUpCourseAdapter(List<Course> list) {
         mlist = list;
@@ -73,7 +81,26 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
     }
 
     private void signUpCourse(Course course) {
+        SubCourseId subCourseId = new SubCourseId();
+        subCourseId.setCourse_id(course.getCourse_id());
+        ApiService.apiService.signUpCourseRequestStudent(user_id, subCourseId, token).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.code()==200)
+                    Toast.makeText(context, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                else {
+                    if(response.message()!= null)
+                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -101,6 +128,7 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
             if(pos.getCurr_state()==0)
                 btnRegister.setBackgroundResource(R.drawable.ic_unregistered);
             else btnRegister.setBackgroundResource(R.drawable.ic_registered);
+
         }
     }
 }
