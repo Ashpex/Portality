@@ -40,5 +40,18 @@
     <string name="SexMale">Nam</string>
     <string name="DutyStudent">Sinh viên</string>
     <string name="SaveEdit">Save</string>
-
+    <string name="day_start_title">Ngày bắt đầu</string>
+    <string name="exampleTime">21/08/2021</string>
+    <string name="exampleTimeTitle">Thời gian</string>
+    <string name="exampleTimeOfDay">07:30 AM - 11:30 AM, T2</string>
+    <string name="exampleDescriptionTitle">Mô tả khóa học</string>
+    <string name="exampleDescription">Lập trình hướng đối tượng là môn học gần như phải được học bởi tất cả các lập trình viên. Qua khóa học này học viên những điều từ căn bản đến nâng cao để năm bắt được</string>
+    <string name="exampleLinkTitle">Phòng học</string>
+    <string name="exampleLink">Link zoom</string>
+    <string name="exmapleFeeTitle">Học phí</string>
+    <string name="exampleFee">180.000 vnđ</string>
+    <string name="exampleRequire">Biết trước được những kỹ thuật lập trình cơ bản, hiểu được các ngôn ngữ lập trình sau: python, java, C++/C,</string>
+    <string name="exampleRequireTitle">Yêu cầu</string>
+    <string name="create_course_title">Tạo khóa học</string>
+    <string name="info_title">Thông tin khóa học</string>
 </resources>

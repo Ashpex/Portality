@@ -13,7 +13,6 @@
         <entry key="..\:/Coding/Portality/app/src/main/res/drawable/ic_add_c.xml" value="0.2911458333333333" />
         <entry key="..\:/Coding/Portality/app/src/main/res/drawable/ic_exit.xml" value="0.15185185185185185" />
         <entry key="..\:/Coding/Portality/app/src/main/res/drawable/ic_fee.xml" value="0.2518518518518518" />
-        <entry key="..\:/Coding/Portality/app/src/main/res/drawable/ic_finished.xml" value="0.2755208333333333" />
         <entry key="..\:/Coding/Portality/app/src/main/res/drawable/ic_home.xml" value="0.2518518518518518" />
         <entry key="..\:/Coding/Portality/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2518518518518518" />
         <entry key="..\:/Coding/Portality/app/src/main/res/drawable/ic_menu_out.xml" value="0.15989583333333332" />
@@ -38,7 +37,6 @@
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_course.xml" value="0.15896739130434784" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_login.xml" value="0.16032608695652173" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_main.xml" value="0.1598731884057971" />
-        <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_search_result.xml" value="0.24818840579710144" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/app_bar_main.xml" value="0.2" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/content_main.xml" value="0.16032608695652173" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/fragment_forum.xml" value="0.2" />
@@ -62,10 +60,9 @@
         <entry key="..\:/Portality/app/src/main/res/layout/content_main.xml" value="0.21739130434782608" />
         <entry key="..\:/Portality/app/src/main/res/layout/fragment_forum.xml" value="0.266304347826087" />
         <entry key="..\:/Portality/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
-        <entry key="..\:/Portality/app/src/main/res/layout/fragment_sign_up.xml" value="0.2" />
         <entry key="..\:/Portality/app/src/main/res/layout/header_menu_main.xml" value="0.21739130434782608" />
         <entry key="..\:/Portality/app/src/main/res/layout/item_course_forum.xml" value="0.16927083333333334" />
-        <entry key="..\:/Portality/app/src/main/res/layout/item_course_sign_up.xml" value="0.536" />
+        <entry key="..\:/Portality/app/src/main/res/layout/item_course_sign_up.xml" value="0.264" />
         <entry key="..\:/Portality/app/src/main/res/layout/item_noti.xml" value="0.21739130434782608" />
         <entry key="..\:/Portality/app/src/main/res/layout/item_ryc_noti.xml" value="0.21739130434782608" />
         <entry key="..\:/Portality/app/src/main/res/layout/item_task_bot.xml" value="0.2504528985507246" />
@@ -99,6 +96,7 @@
         <entry key="app/src/main/res/drawable/user_background.xml" value="0.4824074074074074" />
         <entry key="app/src/main/res/drawable/vie_bg.xml" value="0.5177083333333333" />
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.315234375" />
+        <entry key="app/src/main/res/layout/activity_create_course.xml" value="0.29444444444444445" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_notification.xml" value="0.44212962962962965" />
@@ -109,6 +107,7 @@
         <entry key="app/src/main/res/layout/fragment_forgot_password1.xml" value="0.44212962962962965" />
         <entry key="app/src/main/res/layout/fragment_forgot_password2.xml" value="0.44212962962962965" />
         <entry key="app/src/main/res/layout/fragment_forum.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_info_course.xml" value="0.29444444444444445" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.42592592592592593" />
         <entry key="app/src/main/res/layout/fragment_profile_edit.xml" value="0.44212962962962965" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.44212962962962965" />

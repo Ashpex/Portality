@@ -91,7 +91,7 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
             @Override
             public void onClick(View view) {
                 if(state_filter==0)
-                signUpCourse(mlist.get(position));
+                    signUpCourse(mlist.get(position));
                 else if(state_filter==1)
                     cancelCourse(mlist.get(position));
             }
