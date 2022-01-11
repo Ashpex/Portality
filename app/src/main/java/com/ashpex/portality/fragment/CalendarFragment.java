@@ -85,8 +85,41 @@ public class CalendarFragment extends Fragment {
         maxDate.add(Calendar.YEAR, 1);
 
         List<CalendarEvent> eventList = new ArrayList<>();
-        mockList(eventList);
+        // get data
+        SharedPreferences sharedPref = view.getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        userName = sharedPref.getString("user_name", "null");
+        token = sharedPref.getString("token", "null");
+        userId = sharedPref.getInt("user_id", 0);
 
+        ApiService.apiService.getUserCourse(userId, token).enqueue(new Callback<List<UserCourseOnStudying>>() {
+            @Override
+            public void onResponse(Call<List<UserCourseOnStudying>> call, Response<List<UserCourseOnStudying>> response) {
+                if(response.code() == 200) {
+                    mlist = response.body();
+                    filterList(mlist);
+
+                    if(mlist.size() !=0){
+                        Calendar startTime = Calendar.getInstance();
+                        //startTime.add(Calendar.DAY_OF_YEAR, 0);
+                        Calendar endTime = Calendar.getInstance();
+                        //endTime.add(Calendar.DAY_OF_YEAR, 0);
+
+                        for(int i = 0; i < mlist.size(); i++){
+                            BaseCalendarEvent event = new BaseCalendarEvent(mlist.get(i).getCourse_name(),mlist.get(i).getTeacher_name(),mlist.get(i).getTeacher_name(),
+                                    R.color.darker_blue, startTime, endTime, true);
+                            eventList.add(event);
+                        }
+
+                    }
+                    mAgendaCalendarView.init(eventList, minDate, maxDate, Locale.getDefault(), calendarPickerController);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<UserCourseOnStudying>> call, Throwable t) {
+                Log.d("alo", "Cant connect");
+            }
+        });
         mAgendaCalendarView.init(eventList, minDate, maxDate, Locale.getDefault(), calendarPickerController);
     }
 
