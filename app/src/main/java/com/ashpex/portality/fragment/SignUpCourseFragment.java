@@ -79,11 +79,7 @@ public class SignUpCourseFragment extends Fragment implements SignUpInterface {
                 }
                 else {
                     if(response.message() != null)
-<<<<<<< HEAD
                         Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();
-=======
-                    Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();
->>>>>>> refs/remotes/origin/master
                     else
                         Toast.makeText(getContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
                 }

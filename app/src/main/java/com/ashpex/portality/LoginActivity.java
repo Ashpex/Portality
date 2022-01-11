@@ -108,11 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
                     if(response.message()!=null)
-<<<<<<< HEAD
                         Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_SHORT).show();
-=======
-                    Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_SHORT).show();
->>>>>>> refs/remotes/origin/master
                     else
                         Toast.makeText(getApplicationContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
                 }
