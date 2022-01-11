@@ -35,13 +35,11 @@
         <entry key="..\:/Coding/Portality/app/src/main/res/drawable/user_background.xml" value="0.2518518518518518" />
         <entry key="..\:/Coding/Portality/app/src/main/res/drawable/vie_bg.xml" value="0.2518518518518518" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_course.xml" value="0.15896739130434784" />
-        <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_create_course.xml" value="0.176" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_login.xml" value="0.16032608695652173" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_main.xml" value="0.1598731884057971" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/app_bar_main.xml" value="0.2" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/content_main.xml" value="0.16032608695652173" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/fragment_forum.xml" value="0.2" />
-        <entry key="..\:/Coding/Portality/app/src/main/res/layout/fragment_info_course.xml" value="0.259375" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/fragment_task.xml" value="0.12613981762917933" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/header_menu_main.xml" value="0.14375" />
@@ -76,6 +74,7 @@
         <entry key="app/src/main/res/drawable/circle_icon.xml" value="0.4824074074074074" />
         <entry key="app/src/main/res/drawable/gradient_green.xml" value="0.5177083333333333" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.4824074074074074" />
+        <entry key="app/src/main/res/drawable/ic_add_button.xml" value="0.3125" />
         <entry key="app/src/main/res/drawable/ic_exit.xml" value="0.4824074074074074" />
         <entry key="app/src/main/res/drawable/ic_forum_white.xml" value="0.4023148148148148" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.4601851851851852" />
@@ -90,6 +89,7 @@
         <entry key="app/src/main/res/drawable/ic_outline_work.xml" value="0.5177083333333333" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.4824074074074074" />
         <entry key="app/src/main/res/drawable/ic_sign_up_course.xml" value="0.4601851851851852" />
+        <entry key="app/src/main/res/drawable/ic_time.xml" value="0.3125" />
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/drawable/ic_user_gray_small.xml" value="0.5177083333333333" />
         <entry key="app/src/main/res/drawable/ic_wc.xml" value="0.5177083333333333" />

@@ -2,6 +2,7 @@ package com.ashpex.portality.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -95,21 +96,34 @@ public class CalendarFragment extends Fragment {
             @Override
             public void onResponse(Call<List<UserCourseOnStudying>> call, Response<List<UserCourseOnStudying>> response) {
                 if(response.code() == 200) {
+                    Calendar startTime = Calendar.getInstance();
+                    startTime.add(Calendar.DAY_OF_YEAR, 0);
+                    Calendar endTime = Calendar.getInstance();
+                    endTime.add(Calendar.DAY_OF_YEAR, 0);
+
                     mlist = response.body();
-                    filterList(mlist);
+                    filterList(mlist, startTime);
 
                     if(mlist.size() !=0){
-                        Calendar startTime = Calendar.getInstance();
-                        //startTime.add(Calendar.DAY_OF_YEAR, 0);
-                        Calendar endTime = Calendar.getInstance();
-                        //endTime.add(Calendar.DAY_OF_YEAR, 0);
+
 
                         for(int i = 0; i < mlist.size(); i++){
                             BaseCalendarEvent event = new BaseCalendarEvent(mlist.get(i).getCourse_name(),mlist.get(i).getTeacher_name(),mlist.get(i).getTeacher_name(),
-                                    R.color.darker_blue, startTime, endTime, true);
+                                    Color.parseColor(mlist.get(i).getColor()), startTime, endTime, true);
                             eventList.add(event);
                         }
 
+                        Calendar startTime2 = startTime;
+                        Calendar endTime2 = endTime;
+                        startTime2.add(Calendar.DAY_OF_YEAR,1);
+                        endTime2 = startTime2;
+                        filterList(mlist, startTime2);
+
+                        for(int i = 0; i < mlist.size(); i++){
+                            BaseCalendarEvent event2 = new BaseCalendarEvent(mlist.get(i).getCourse_name(),mlist.get(i).getTeacher_name(),mlist.get(i).getTeacher_name(),
+                                    Color.parseColor(mlist.get(i).getColor()), startTime2, endTime2, true);
+                            eventList.add(event2);
+                        }
                     }
                     mAgendaCalendarView.init(eventList, minDate, maxDate, Locale.getDefault(), calendarPickerController);
                 }
@@ -138,7 +152,7 @@ public class CalendarFragment extends Fragment {
             public void onResponse(Call<List<UserCourseOnStudying>> call, Response<List<UserCourseOnStudying>> response) {
                 if(response.code() == 200) {
                     mlist = response.body();
-                    filterList(mlist);
+                    //filterList(mlist);
 
                     // test api
                     if(mlist.size() !=0){
@@ -146,7 +160,7 @@ public class CalendarFragment extends Fragment {
                         startTime3.add(Calendar.DAY_OF_YEAR, 0);
                         Calendar endTime3 = Calendar.getInstance();
                         endTime3.add(Calendar.DAY_OF_YEAR, 0);
-                        filterList(mlist);
+                        filterList(mlist,startTime3);
                         BaseCalendarEvent event3 = new BaseCalendarEvent(mlist.get(0).getCourse_name(),mlist.get(0).getTeacher_name(),mlist.get(0).getTeacher_name(),
                                 R.color.darker_blue, startTime3, endTime3, true);
                         eventList.add(event3);
@@ -225,7 +239,6 @@ public class CalendarFragment extends Fragment {
             public void onResponse(Call<List<UserCourseOnStudying>> call, Response<List<UserCourseOnStudying>> response) {
                 if(response.code() == 200) {
                     mlist = response.body();
-                    filterList(mlist);
                 }
             }
 
@@ -237,9 +250,9 @@ public class CalendarFragment extends Fragment {
 
     }
 
-    private void filterList(List<UserCourseOnStudying> mlist) {
-        Date currentTime = Calendar.getInstance().getTime();
-        int day = currentTime.getDay();
+    private void filterList(List<UserCourseOnStudying> mlist, Calendar calendarInstance) {
+        Date currentTime = calendarInstance.getTime();
+        int day = currentTime.getDay() ;
         mlist.removeIf(i -> i.getDay_study() == day);
     }
 
