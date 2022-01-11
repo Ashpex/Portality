@@ -80,6 +80,7 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
                 @Override
                 public void onClick(View view) {
                     if(type == 2)
+<<<<<<< HEAD
                         ApiService.apiService.unSignCourse(userId, mlist.get(position).getCourse_id(), token).enqueue(new Callback<ResponseBody>() {
                             @Override
                             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -102,6 +103,30 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
                                 Toast.makeText(holder.context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
                             }
                         });
+=======
+                    ApiService.apiService.unSignCourse(userId, mlist.get(position).getCourse_id(), token).enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            if(response.code()==200) {
+                                mlist.remove(position);
+                                notifyDataSetChanged();
+                                Toast.makeText(holder.context, "Hủy đăng ký thành công", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                if(response.message()!=null)
+                                Toast.makeText(holder.context, "Hủy đăng ký thành công", Toast.LENGTH_SHORT).show();
+                                else
+                                Toast.makeText(holder.context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Toast.makeText(holder.context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+>>>>>>> refs/remotes/origin/master
 
                     if(type==1) {
 

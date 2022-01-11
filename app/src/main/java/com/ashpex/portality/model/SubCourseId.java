@@ -10,4 +10,8 @@ public class SubCourseId {
     public void setCourse_id(int course_id) {
         this.course_id = course_id;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> refs/remotes/origin/master

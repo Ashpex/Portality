@@ -90,7 +90,11 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
                     Toast.makeText(context, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                 else {
                     if(response.message()!= null)
+<<<<<<< HEAD
                         Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+=======
+                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
+>>>>>>> refs/remotes/origin/master
                     else
                         Toast.makeText(context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
                 }
