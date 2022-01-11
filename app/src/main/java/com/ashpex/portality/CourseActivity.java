@@ -117,12 +117,12 @@ public class CourseActivity extends AppCompatActivity {
                     setViewRyc(response.body(), 0);
                 }
                 else
-                    Toast.makeText(getApplicationContext(),"Đã xảy ra lỗi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Đã xảy ra lỗi, thử lại sau", Toast.LENGTH_SHORT).show();
                 mProgressDialog.cancel();
             }
             @Override
             public void onFailure(Call<List<CourseSigned>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Đã xảy ra lỗi", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Đã xảy ra lỗi, thử lại sau", Toast.LENGTH_SHORT).show();
                 mProgressDialog.cancel();
             }
         });

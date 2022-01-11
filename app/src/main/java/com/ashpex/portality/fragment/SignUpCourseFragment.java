@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.ashpex.portality.adapter.TaskBotAdapter;
 import com.ashpex.portality.adapter.TaskTopAdapter;
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.Course;
+import com.ashpex.portality.model.CourseSigned;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +37,16 @@ import retrofit2.Response;
 public class SignUpCourseFragment extends Fragment implements SignUpInterface {
     private RecyclerView ryc_sign_up;
     private ImageView btnAddNew;
+    private ImageView btnFilter;
+    private TextView txtSignUp;
     private Context context;
     private List<Course> list;
     private List<Integer> listSigned;
     private int type;
     private String token;
     private SignUpCourseAdapter signUpCourseAdapter;
+    private int state_filter = 0;
+    private int userId;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -59,6 +65,8 @@ public class SignUpCourseFragment extends Fragment implements SignUpInterface {
         SharedPreferences sharedPref = context.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         type = sharedPref.getInt("user_type", 2);
         token = sharedPref.getString("token","null");
+        userId = sharedPref.getInt("user_id", 0);
+
     }
 
     private void addEvents() {
@@ -66,22 +74,70 @@ public class SignUpCourseFragment extends Fragment implements SignUpInterface {
     }
 
     private void getAvailableCourse() {
-        if(type == 2)
+        if(type == 2) {
             btnAddNew.setVisibility(View.INVISIBLE);
-        else
+            btnFilter.setVisibility(View.INVISIBLE);
+        }
+        else {
             btnAddNew.setVisibility(View.VISIBLE);
+            btnFilter.setVisibility(View.VISIBLE);
+        }
+        allCourseAvailable();
+        state_filter = 0;
+
+        btnFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                state_filter = 1 - state_filter;
+                if(state_filter == 1)
+                    allYourCourse();
+                else
+                    allCourseAvailable();
+
+            }
+        });
+    }
+
+    private void allYourCourse() {
+        txtSignUp.setText("Danh sách lớp của bạn");
+        ApiService.apiService.getAllYourCourseSigned(userId, token).enqueue(new Callback<List<Course>>() {
+            @Override
+            public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
+                if(response.code()==200) {
+                    list.clear();
+                    list.addAll(filter(response.body()));
+                    rycSetUp();
+                }
+                else
+                    Toast.makeText(getContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(Call<List<Course>> call, Throwable t) {
+                Toast.makeText(getContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private List<Course> filter(List<Course> body) {
+        List<Course> returnList = new ArrayList<>();
+        for(Course i: body) {
+            if(i.getCurr_state()==0) {
+                returnList.add(i);
+            }
+        }
+        return returnList;
+    }
+    private void allCourseAvailable() {
+        txtSignUp.setText("Danh sách lớp");
         ApiService.apiService.getAvailableCourse(0).enqueue(new Callback<List<Course>>() {
             @Override
             public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
                 if(response.code()==200) {
+                    list.clear();
                     list.addAll(response.body());
                     rycSetUp();
                 }
                 else {
-                    if(response.message() != null)
-                        Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(getContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -97,6 +153,7 @@ public class SignUpCourseFragment extends Fragment implements SignUpInterface {
         signUpCourseAdapter = new SignUpCourseAdapter(list);
         signUpCourseAdapter.setContext(context);
         signUpCourseAdapter.setToken(token);
+        signUpCourseAdapter.setState_filter(state_filter);
         ryc_sign_up.setAdapter(signUpCourseAdapter);
         ryc_sign_up.setHasFixedSize(true);
     }
@@ -104,8 +161,8 @@ public class SignUpCourseFragment extends Fragment implements SignUpInterface {
     private void mappingControls(View view) {
         btnAddNew = view.findViewById(R.id.btnAddNew);
         ryc_sign_up = view.findViewById(R.id.ryc_sign_up);
-
-
+        btnFilter = view.findViewById(R.id.btnFilter);
+        txtSignUp = view.findViewById(R.id.txtSignUp);
     }
 
     @Override
