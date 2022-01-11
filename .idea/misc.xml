@@ -34,14 +34,15 @@
         <entry key="..\:/Coding/Portality/app/src/main/res/drawable/search_background.xml" value="0.15989583333333332" />
         <entry key="..\:/Coding/Portality/app/src/main/res/drawable/user_background.xml" value="0.2518518518518518" />
         <entry key="..\:/Coding/Portality/app/src/main/res/drawable/vie_bg.xml" value="0.2518518518518518" />
-        <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_course.xml" value="0.15896739130434784" />
-        <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_create_course.xml" value="0.176" />
+        <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_course.xml" value="0.2" />
+        <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_create_course.xml" value="0.264" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_login.xml" value="0.16032608695652173" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/activity_main.xml" value="0.1598731884057971" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/app_bar_main.xml" value="0.2" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/content_main.xml" value="0.16032608695652173" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/fragment_forum.xml" value="0.2" />
-        <entry key="..\:/Coding/Portality/app/src/main/res/layout/fragment_info_course.xml" value="0.259375" />
+        <entry key="..\:/Coding/Portality/app/src/main/res/layout/fragment_info_course.xml" value="0.2" />
+        <entry key="..\:/Coding/Portality/app/src/main/res/layout/fragment_profile.xml" value="0.259375" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/fragment_task.xml" value="0.12613981762917933" />
         <entry key="..\:/Coding/Portality/app/src/main/res/layout/header_menu_main.xml" value="0.14375" />

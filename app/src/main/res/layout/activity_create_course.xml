@@ -26,6 +26,7 @@
             android:text="@string/create_course_title"
             android:textSize="28dp"/>
     </LinearLayout>
+
     <TextView
         android:layout_width="250dp"
         android:layout_height="40dp"
@@ -34,4 +35,215 @@
         android:textColor="@color/black"
         android:text="@string/info_title"
         android:textSize="28dp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/black"
+                android:text="Tên khóa học"
+                android:textSize="18dp"/>
+            <EditText
+                android:id="@+id/nameCourse"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/black"
+                android:hint="Lập trình hướng đối tượng"
+                android:textSize="18dp"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
+                        android:text="Thời gian"
+                        android:textSize="15dp"/>
+                    <EditText
+                        android:id="@+id/txtTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
+                        android:hint="01/01/2021"
+                        android:drawableEnd="@drawable/ic_time"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
+                        android:text="Thứ"
+                        android:textSize="15dp"/>
+                    <EditText
+                        android:id="@+id/txtDay_of_wwek"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:textColor="@color/black"
+                        android:hint="Monday"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
+                        android:text="Giờ bắt đầu"
+                        android:textSize="15dp"/>
+                    <EditText
+                        android:id="@+id/txtTimeStart"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
+                        android:hint="07:30"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
+                        android:text="Giờ kết thúc"
+                        android:textSize="15dp"/>
+                    <EditText
+                        android:id="@+id/txtTimeEnd"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="20dp"
+                        android:hint="07:30"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/black"
+                android:text="Mô tả"
+                android:textSize="15dp"/>
+            <EditText
+                android:id="@+id/txtDes"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/black"
+                android:textSize="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/black"
+                android:text="Phòng học"
+                android:textSize="15dp"/>
+            <EditText
+                android:id="@+id/txtLink"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/black"
+                android:hint="Link zoom"
+                android:textSize="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/black"
+                android:text="Học phí"
+                android:textSize="15dp"/>
+            <EditText
+                android:id="@+id/txtFee"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/black"
+                android:hint="180.000"
+                android:textSize="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/black"
+                android:text="Yêu cầu"
+                android:textSize="15dp"/>
+            <EditText
+                android:id="@+id/txtRequire"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/black"
+                android:textSize="15dp"/>
+            <ImageButton
+                android:id="@+id/btnSave"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_add_button"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout >
