@@ -132,6 +132,9 @@ public class CourseActivity extends AppCompatActivity {
         listCourseSigned = body;
         userCourseSignedAdapter.setList(listCourseSigned);
         userCourseSignedAdapter.setState(state);
+        userCourseSignedAdapter.setUserId(userId);
+        userCourseSignedAdapter.setToken(token);
+        userCourseSignedAdapter.setType(type);
         ryc_course_activity.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         ryc_course_activity.setAdapter(userCourseSignedAdapter);
     }

@@ -76,13 +76,19 @@ public class ProfileFragment extends Fragment {
             public void onResponse(Call<List<CourseSigned>> call, Response<List<CourseSigned>> response) {
                 if(response.code()==200) {
                     if(infoUser.getType()==2)
-                    txtCountCourse.setText("Đã tham gia "+ response.body().size() +" khóa học");
+                        txtCountCourse.setText("Đã tham gia "+ response.body().size() +" khóa học");
                     else
                         txtCountCourse.setText("Đã tạo "+ response.body().size() +" khóa học");
                 }
+                else
+                if(response.message() != null)
+                    Toast.makeText(getContext(), response.message(), Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onFailure(Call<List<CourseSigned>> call, Throwable t) {
+                Toast.makeText(getContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
             }
         });
     }

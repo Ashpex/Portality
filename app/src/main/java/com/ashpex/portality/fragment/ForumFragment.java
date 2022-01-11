@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,8 +27,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ashpex.portality.ActionForumInterface;
 import com.ashpex.portality.CourseActivity;
 import com.ashpex.portality.R;
+import com.ashpex.portality.SearchResultActivity;
 import com.ashpex.portality.adapter.UserCourseOnStudyingAdapter;
 import com.ashpex.portality.api.ApiService;
+import com.ashpex.portality.model.Course;
 import com.ashpex.portality.model.UserCourseOnStudying;
 import com.ashpex.portality.fragment.CalendarFragment;
 import com.google.android.material.navigation.NavigationView;
@@ -52,6 +57,8 @@ public class ForumFragment extends Fragment {
     private UserCourseOnStudyingAdapter userCourseAdapter;
     private TextView txtForum;
     private ActionForumInterface actionForumInterface;
+    private EditText searchText;
+    private ImageView searchingIcon;
 
     public void setActionForumInterface(ActionForumInterface actionForumInterface) {
         this.actionForumInterface = actionForumInterface;
@@ -117,6 +124,20 @@ public class ForumFragment extends Fragment {
     }
 
     private void addEvents() {
+        searchingIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(TextUtils.isEmpty(searchText.getText())) {
+                    Toast.makeText(getContext(), "Mời nhập đầy đủ dữ liệu", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Intent intent = new Intent(getActivity(), SearchResultActivity.class);
+                    intent.putExtra("text_search", searchText.getText().toString());
+                    startActivity(intent);
+                }
+            }
+        });
         layout_course_forum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,12 +150,15 @@ public class ForumFragment extends Fragment {
         layout_Schedule_forum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                actionForumInterface.setChecked(1);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.frMain, new CalendarFragment());
                 transaction.commit();
             }
         });
     }
+
+
 
     private void setCheckedSchedule() {
         navigationView.getMenu().findItem(R.id.menuSchedule).setChecked(true);
@@ -149,6 +173,8 @@ public class ForumFragment extends Fragment {
         ryc_forum = view.findViewById(R.id.ryc_forum);
         txtForum = view.findViewById(R.id.txtForum);
         userCourseAdapter = new UserCourseOnStudyingAdapter();
+        searchText = view.findViewById(R.id.searchText);
+        searchingIcon = view.findViewById(R.id.searchingIcon);
     }
 
     class FilterAsyncTask extends AsyncTask<Void, Void, Void> {

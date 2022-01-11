@@ -1,24 +1,48 @@
 package com.ashpex.portality.adapter;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ashpex.portality.R;
+import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.CourseSigned;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSignedAdapter.CourseViewHolder>{
     private List<CourseSigned> mlist;
     private int state = 0;
+    private String token =" ";
+    private int userId;
+    private int type;
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public void setState(int state) {
         this.state = state;
@@ -40,13 +64,51 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CourseViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.bindData(mlist.get(position));
-        if(state == 1) {
+        if(state==1)
             holder.btnRegister.setVisibility(View.INVISIBLE);
-        }
         else
-            holder.btnRegister.setVisibility(View.INVISIBLE);
+            holder.btnRegister.setVisibility(View.VISIBLE);
+
+        if(mlist.get(position).getCurr_state() == 0 && type ==2)
+            holder.btnRegister.setBackgroundResource(R.drawable.ic_registered);
+        if(mlist.get(position).getCurr_state() == 0 && type ==1)
+            holder.btnRegister.setBackgroundResource(R.drawable.ic_unregistered);
+        if(mlist.get(position).getCurr_state()==0 ) {
+            holder.btnRegister.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(type == 2)
+                        ApiService.apiService.unSignCourse(userId, mlist.get(position).getCourse_id(), token).enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                if(response.code()==200) {
+                                    mlist.remove(position);
+                                    notifyDataSetChanged();
+                                    Toast.makeText(holder.context, "Hủy đăng ký thành công", Toast.LENGTH_SHORT).show();
+                                }
+                                else {
+                                    if(response.message()!=null)
+                                        Toast.makeText(holder.context, "Hủy đăng ký thành công", Toast.LENGTH_SHORT).show();
+                                    else
+                                        Toast.makeText(holder.context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                Toast.makeText(holder.context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    if(type==1) {
+
+                    }
+                }
+            });
+        }
     }
 
     @Override
@@ -60,12 +122,14 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
         private final TextView nameTeacher_item;
         public final ImageButton btnRegister;
         private final LinearLayout layout_color;
+        public Context context;
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
             nameCourse_item = itemView.findViewById(R.id.nameCourse_item);
             nameTeacher_item = itemView.findViewById(R.id.nameTeacher_item);
             btnRegister = itemView.findViewById(R.id.btnRegister);
             layout_color = itemView.findViewById(R.id.layout_color);
+            context = itemView.getContext();
         }
         public void bindData(CourseSigned pos) {
             if(pos.getTeacher_name() == null)
@@ -73,7 +137,7 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
             nameCourse_item.setText(pos.getCourse_name());
             if(pos.getCurr_state() == 2)
                 btnRegister.setBackgroundResource(R.drawable.ic_finished);
-            else
+            if(pos.getCurr_state() == 1)
                 btnRegister.setBackgroundResource(R.drawable.ic_unfinished);
 
             layout_color.setBackgroundColor(Color.parseColor(pos.getColor()));

@@ -1,7 +1,9 @@
 package com.ashpex.portality.model;
 
+import com.google.gson.JsonElement;
+
 public class Course {
-    private Integer course_id;
+    private Integer _id;
     private String course_name;
     private String subject_name ;
     private Integer subject_id ;
@@ -29,8 +31,8 @@ public class Course {
         this.fee = fee;
     }
 
-    public Integer getCourse_id() {
-        return course_id;
+    public int getCourse_id() {
+        return _id;
     }
 
     public String getColor() {
@@ -42,7 +44,7 @@ public class Course {
     }
 
     public void setCourse_id(Integer course_id) {
-        this.course_id = course_id;
+        this._id = course_id;
     }
 
     public String getCourse_name() {
