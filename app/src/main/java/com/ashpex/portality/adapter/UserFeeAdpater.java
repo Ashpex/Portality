@@ -57,7 +57,7 @@ public class UserFeeAdpater extends  RecyclerView.Adapter<UserFeeAdpater.FeeView
 
     @Override
     public int getItemCount() {
-        if(mListCourses == null){
+        if(mListCourses != null){
             return mListCourses.size();
         }
         return 0;
@@ -72,7 +72,6 @@ public class UserFeeAdpater extends  RecyclerView.Adapter<UserFeeAdpater.FeeView
         private TextView tvCourseName;
         public FeeViewHolder(@NonNull View itemView){
             super(itemView);
-
             imgFee = itemView.findViewById(R.id.imgCourse_item_fee);
             tvFee = itemView.findViewById(R.id.fee_item_fee);
             tvCourseName = itemView.findViewById(R.id.course_item_fee);

@@ -71,6 +71,7 @@ public class FeeFragment extends Fragment {
             public void onResponse(Call<List<UserCourseOnStudying>> call, Response<List<UserCourseOnStudying>> response) {
                 if(response.code() == 200) {
                     mList = response.body();
+                    Log.d("ALOO", String.valueOf(mList.size()));
                     userFeeAdpater = new UserFeeAdpater(getContext());
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
                     rycFee.setLayoutManager(linearLayoutManager);

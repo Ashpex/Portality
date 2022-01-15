@@ -225,7 +225,6 @@ public class MainScreen extends AppCompatActivity implements ActionForumInterfac
             }
 
             case R.id.menuFeeUser:{
-                Log.d("ALALLALAL", "ALo");
                 FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frMain, new FeeFragment());
                 transaction.commit();
