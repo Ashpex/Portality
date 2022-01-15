@@ -159,7 +159,7 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
             context = itemView.getContext();
         }
         public void bindData(Course pos) {
-            layout_color.setBackgroundColor(Color.parseColor(pos.getColor()));
+            layout_color.getBackground().setTint(Color.parseColor(pos.getColor()));
             nameCourse_item.setText(pos.getCourse_name());
             if(pos.getTeacher_name() == null)
                 nameTeacher_item.setVisibility(View.INVISIBLE);

@@ -5,7 +5,12 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp"
+<<<<<<< HEAD
     android:id="@+id/layout_color">
+=======
+    android:id="@+id/layout_color"
+    android:background="@drawable/radius">
+>>>>>>> refs/remotes/origin/master
     <ImageButton
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -41,4 +46,5 @@
             android:textColor="@color/black"
             android:layout_marginBottom="5dp"/>
     </LinearLayout>
+
 </LinearLayout>

@@ -2,6 +2,10 @@ package com.ashpex.portality.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+<<<<<<< HEAD
+=======
+import android.graphics.Color;
+>>>>>>> refs/remotes/origin/master
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +78,7 @@ public class UserCourseOnStudyingAdapter extends RecyclerView.Adapter<UserCourse
             nameCourse.setText(pos.getCourse_name());
             timeCourse.setText("Thời gian: "+ pos.getTime_start().substring(0,5)+ " - " + pos.getTime_end().substring(0,5));
             nameTeacher.setText("Giáo viên: " + pos.getTeacher_name());
+            layout_color.getBackground().setTint(Color.parseColor(pos.getColor()));
         }
     }
 }

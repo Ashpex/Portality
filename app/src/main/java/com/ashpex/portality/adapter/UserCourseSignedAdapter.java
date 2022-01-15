@@ -3,6 +3,10 @@ package com.ashpex.portality.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+<<<<<<< HEAD
+=======
+import android.content.res.ColorStateList;
+>>>>>>> refs/remotes/origin/master
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -168,7 +172,7 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
             if(pos.getCurr_state() == 1)
                 btnRegister.setBackgroundResource(R.drawable.ic_unfinished);
 
-            layout_color.setBackgroundColor(Color.parseColor(pos.getColor()));
+            layout_color.getBackground().setTint(Color.parseColor(pos.getColor()));
         }
     }
 }
