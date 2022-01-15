@@ -88,7 +88,7 @@ public class MainScreen extends AppCompatActivity implements ActionForumInterfac
         FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
         ForumFragment f = new ForumFragment();
         f.setActionForumInterface(this);
-        transaction.replace(R.id.frMain, new FeeFragment());
+        transaction.replace(R.id.frMain, f);
         transaction.commit();
     }
 
@@ -226,10 +226,10 @@ public class MainScreen extends AppCompatActivity implements ActionForumInterfac
 
             case R.id.menuFeeUser:{
                 Log.d("ALALLALAL", "ALo");
-//                FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frMain, new FeeFragment());
-//                transaction.commit();
-//                drawerLayout.closeDrawers();
+                FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frMain, new FeeFragment());
+                transaction.commit();
+                drawerLayout.closeDrawers();
                 return;
             }
             case R.id.menuSchedule:{
