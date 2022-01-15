@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ashpex.portality.R;
 import com.ashpex.portality.adapter.UserFeeAdpater;
@@ -35,6 +36,7 @@ public class FeeFragment extends Fragment {
     private String token;
     private Integer userId;
     private int type;
+    private TextView tvTotal;
     private UserFeeAdpater userFeeAdpater;
     private List<UserCourseOnStudying> mList;
 
@@ -51,13 +53,6 @@ public class FeeFragment extends Fragment {
 
     }
 
-    private List<UserCourseOnStudying> getListFee(){
-        List<UserCourseOnStudying> list = new ArrayList<>();
-
-
-
-        return list;
-    }
 
     private void getData() {
         SharedPreferences sharedPref = view.getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
@@ -70,12 +65,18 @@ public class FeeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<UserCourseOnStudying>> call, Response<List<UserCourseOnStudying>> response) {
                 if(response.code() == 200) {
-                    List<UserCourseOnStudying> mlist = response.body();
+                    mList = response.body();
                     userFeeAdpater = new UserFeeAdpater(getContext());
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
                     rycFee.setLayoutManager(linearLayoutManager);
-                    userFeeAdpater.setData(mlist);
+                    userFeeAdpater.setData(mList);
                     rycFee.setAdapter(userFeeAdpater);
+
+                    double total  = 0;
+                    for(int i = 0; i < mList.size(); i++){
+                        total  += Double.parseDouble(mList.get(i).getFee());
+                    }
+                    tvTotal.setText(String.valueOf(total));
                 }
             }
 
@@ -88,5 +89,6 @@ public class FeeFragment extends Fragment {
 
     private void mappingControls(){
         rycFee = view.findViewById(R.id.ryc_fee);
+        tvTotal = view.findViewById(R.id.tv_fee_total);
     }
 }

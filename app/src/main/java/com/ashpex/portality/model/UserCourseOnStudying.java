@@ -9,7 +9,7 @@ public class UserCourseOnStudying {
     private String time_end;
     private int day_study;
     private String color;
-    private String fee="0$";
+    private String fee;
 
     public String getFee() {
         return fee;

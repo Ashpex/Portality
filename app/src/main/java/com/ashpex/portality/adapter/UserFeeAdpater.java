@@ -57,7 +57,7 @@ public class UserFeeAdpater extends  RecyclerView.Adapter<UserFeeAdpater.FeeView
 
     @Override
     public int getItemCount() {
-        if(mListCourses == null){
+        if(mListCourses != null){
             return mListCourses.size();
         }
         return 0;
