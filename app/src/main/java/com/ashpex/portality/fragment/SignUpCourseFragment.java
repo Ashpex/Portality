@@ -1,11 +1,14 @@
 package com.ashpex.portality.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,11 +19,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ashpex.portality.CreateCourseActivity;
 import com.ashpex.portality.R;
 import com.ashpex.portality.SignUpInterface;
 import com.ashpex.portality.adapter.SignUpCourseAdapter;
+import com.ashpex.portality.adapter.TaskBotAdapter;
+import com.ashpex.portality.adapter.TaskTopAdapter;
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.Course;
+import com.ashpex.portality.model.CourseSigned;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +53,7 @@ public class SignUpCourseFragment extends Fragment implements SignUpInterface {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.activity_sign_up, container, false);
+        View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
         mappingControls(view);
         setUpData(view);
         addEvents();
@@ -66,6 +73,13 @@ public class SignUpCourseFragment extends Fragment implements SignUpInterface {
 
     private void addEvents() {
         getAvailableCourse();
+        btnAddNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CreateCourseActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getAvailableCourse() {

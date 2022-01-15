@@ -8,6 +8,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.ErrorMessage;
+import com.ashpex.portality.model.SignCourseForm;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -120,25 +122,19 @@ public class SignUpActivity extends AppCompatActivity {
     private void saveAction() {
         if(checkInfo())
             return;
-        RequestBody body = RequestBody.create(MediaType.parse("application/json"),"{\n" +
-                "    name: \""+txtSurname_SignUp + " " + txtLastName_SignUp+"\",\n" +
-                "    email: \""+txtEmail_SignUp+"\",\n" +
-                "    password: \""+txtPassword_SignUp+"\",\n" +
-                "    type: "+duty_id+",\n" +
-                "    gender: \""+gender+"\",\n" +
-                "    birthday: \""+date+"\",\n" +
-                "  }");
+        SignCourseForm body = new SignCourseForm(txtSurname_SignUp.getText().toString()+" " + txtLastName_SignUp.getText().toString()
+                , txtEmail_SignUp.getText().toString(), txtPassword_SignUp.getText().toString(), duty_id, gender, date);
         ApiService.apiService.signUpUser(body).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if(response.code()==200) {
                     printToast("Đăng ký thành công");
-                } else {
+                } else if(response.code()==400){
                     Gson gson = new GsonBuilder().create();
                     ErrorMessage mError = new ErrorMessage();
                     try {
-                        mError= gson.fromJson(response.errorBody().string(),ErrorMessage.class);
-                        printToast(mError.getMessage());
+                        //mError= gson.fromJson(response.errorBody().string(),ErrorMessage.class);
+                        printToast(response.errorBody().string());
                     } catch (IOException e) {
                         // handle failure to read error
                     }

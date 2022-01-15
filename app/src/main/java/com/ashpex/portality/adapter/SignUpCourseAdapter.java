@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,17 +18,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ashpex.portality.R;
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.Course;
-import com.ashpex.portality.model.Mess;
+import com.ashpex.portality.model.ErrorMessage;
 import com.ashpex.portality.model.SubCourseId;
-import com.google.gson.JsonObject;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import java.io.IOException;
 import java.util.List;
 
-import okhttp3.FormBody;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -104,20 +100,26 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
     private void signUpCourse(Course course) {
         SubCourseId subCourseId = new SubCourseId();
         subCourseId.setCourse_id(course.getCourse_id());
-        ApiService.apiService.signUpCourseRequestStudent(user_id, subCourseId, token).enqueue(new Callback<Mess>() {
+        ApiService.apiService.signUpCourseRequestStudent(user_id, subCourseId, token).enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<Mess> call, Response<Mess> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if(response.code()==200)
                     Toast.makeText(context, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                 else if(response.code()==400){
-                    Toast.makeText(context, "Khóa học đã đăng ký rồi", Toast.LENGTH_SHORT).show();
-
+                    Gson gson = new GsonBuilder().create();
+                    ErrorMessage mError = new ErrorMessage();
+                    try {
+                        mError= gson.fromJson(response.errorBody().string(),ErrorMessage.class);
+                        Toast.makeText(context,mError.getMessage(), Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        // handle failure to read error
+                    }
                 }else
                     Toast.makeText(context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<Mess> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
             }
         });

@@ -135,6 +135,7 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
             if(pos.getTeacher_name() == null)
                 nameTeacher_item.setText("Ngày bắt đầu: " + pos.getDay_start());
             nameCourse_item.setText(pos.getCourse_name());
+            nameTeacher_item.setText(pos.getTeacher_name());
             if(pos.getCurr_state() == 2)
                 btnRegister.setBackgroundResource(R.drawable.ic_finished);
             if(pos.getCurr_state() == 1)

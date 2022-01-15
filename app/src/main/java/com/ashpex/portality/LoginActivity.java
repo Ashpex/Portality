@@ -17,9 +17,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ashpex.portality.api.ApiService;
+import com.ashpex.portality.model.ErrorMessage;
 import com.ashpex.portality.model.InfoUser;
 import com.ashpex.portality.model.LoginRequest;
 import com.ashpex.portality.model.LoginStatus;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -97,7 +102,6 @@ public class LoginActivity extends AppCompatActivity {
         ProgressDialog mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setMessage("Loading, please wait...");
         mProgressDialog.show();
-        Log.d("Alo", loginRequest.getEmail());
         ApiService.apiService.loginAction(loginRequest).enqueue(new Callback<LoginStatus>() {
             @Override
             public void onResponse(Call<LoginStatus> call, Response<LoginStatus> response) {
@@ -106,12 +110,15 @@ public class LoginActivity extends AppCompatActivity {
 
                     token = response.headers().get("Auth");
                     loginSuccess(loginStatus.getUser());
-                }
-                else {
-                    if(response.message()!=null)
-                        Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(getApplicationContext(), "Lỗi server", Toast.LENGTH_SHORT).show();
+                } else if(response.code()==400) {
+                    Gson gson = new GsonBuilder().create();
+                    ErrorMessage mError = new ErrorMessage();
+                    try {
+                        mError = gson.fromJson(response.errorBody().string(), ErrorMessage.class);
+                        Toast.makeText(getApplicationContext(), mError.getMessage(), Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        // handle failure to read error
+                    }
                 }
                 mProgressDialog.cancel();
             }
