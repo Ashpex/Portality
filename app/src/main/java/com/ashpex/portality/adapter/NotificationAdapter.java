@@ -1,6 +1,5 @@
 package com.ashpex.portality.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,24 +7,23 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ashpex.portality.R;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-public class RycAdapter extends RecyclerView.Adapter<RycAdapter.RycViewHolder>{
+public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.RycViewHolder>{
     private final List<String> mlist;
 
 
-    public RycAdapter(List<String> list) {
+    public NotificationAdapter(List<String> list) {
         mlist = list;
     }
     @NonNull
     @Override
-    public RycAdapter.RycViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public NotificationAdapter.RycViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         return new RycViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_noti, parent, false));
@@ -42,7 +40,8 @@ public class RycAdapter extends RecyclerView.Adapter<RycAdapter.RycViewHolder>{
     }
 
     public static class RycViewHolder extends RecyclerView.ViewHolder{
-
+        private String[] list1 = {"Thông báo học online", "Thông báo nghỉ học ngày 15/7", "Thông báo nghỉ tết dương lịch năm 2022"};
+        private String[] list2 = {"Ngày hôm qua", "Ngày 15/7", "Ngày mai"};
         private final TextView content_item_noti;
         private final ImageButton btnCourse_item_noti;
         private final TextView time_item_noti;
@@ -54,8 +53,11 @@ public class RycAdapter extends RecyclerView.Adapter<RycAdapter.RycViewHolder>{
             time_item_noti = itemView.findViewById(R.id.time_item_noti);
         }
         public void bindData(String pos) {
-            content_item_noti.setText("Thông báo đuổi học vĩnh viễn");
-            time_item_noti.setText("1 ngày trước");
+            Random generator = new Random();
+            int ran = generator.nextInt(3);
+            content_item_noti.setText(list1[ran]);
+
+            time_item_noti.setText(list2[ran]);
         }
     }
 }

@@ -9,11 +9,64 @@ public class Course {
     private Integer subject_id ;
     private String time_start;
     private String time_end;
+    private String day_start ="";
+    private String day_end ="";
     private Integer day_study;
     private int curr_state = 0;
     private String teacher_name;
     private String color;
     private String fee = "$0";
+    private String room ="";
+    private String requirement = "";
+    private String description = "";
+
+    public String getDay_start() {
+        return day_start;
+    }
+
+    public void setDay_start(String day_start) {
+        this.day_start = day_start;
+    }
+
+    public String getDay_end() {
+        return day_end;
+    }
+
+    public void setDay_end(String day_end) {
+        this.day_end = day_end;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer get_id() {
+        return _id;
+    }
+
+    public void set_id(Integer _id) {
+        this._id = _id;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public String getRequirement() {
+        return requirement;
+    }
+
+    public void setRequirement(String requirement) {
+        this.requirement = requirement;
+    }
 
     public Integer getSubject_id() {
         return subject_id;

@@ -2,6 +2,7 @@ package com.ashpex.portality.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ashpex.portality.MainScreen;
 import com.ashpex.portality.R;
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.CourseSigned;
@@ -66,6 +68,7 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.bindData(mlist.get(position));
+        CourseSigned courseSigned = mlist.get(position);
         if(state==1)
             holder.btnRegister.setVisibility(View.INVISIBLE);
         else
@@ -74,7 +77,7 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
         if(mlist.get(position).getCurr_state() == 0 && type ==2)
             holder.btnRegister.setBackgroundResource(R.drawable.ic_registered);
         if(mlist.get(position).getCurr_state() == 0 && type ==1)
-            holder.btnRegister.setBackgroundResource(R.drawable.ic_unregistered);
+            holder.btnRegister.setBackgroundResource(R.drawable.ic_finish_sign_up);
         if(mlist.get(position).getCurr_state()==0 ) {
             holder.btnRegister.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -104,11 +107,35 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
                         });
 
                     if(type==1) {
+                        ApiService.apiService.startCourse(userId, courseSigned.getCourse_id(),token).enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                if(response.code()==200) {
+                                    Toast.makeText(holder.context, "Đã kết thúc đăng ký môn học", Toast.LENGTH_SHORT).show();
+                                    holder.btnRegister.setBackgroundResource(R.drawable.ic_unfinished);
+                                }
+                                else
+                                    Toast.makeText(holder.context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
 
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                Toast.makeText(holder.context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 }
             });
         }
+        holder.layout_color.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.context, MainScreen.class);
+                intent.putExtra("course_id", mlist.get(position).getCourse_id());
+                holder.context.startActivity(intent);
+            }
+        });
     }
 
     @Override

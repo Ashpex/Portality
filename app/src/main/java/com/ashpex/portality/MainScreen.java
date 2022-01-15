@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.ashpex.portality.fragment.CalendarFragment;
 import com.ashpex.portality.fragment.ForumFragment;
+import com.ashpex.portality.fragment.InfoCourseFragment;
 import com.ashpex.portality.fragment.SignUpCourseFragment;
 import com.ashpex.portality.fragment.TaskFragment;
 import com.ashpex.portality.fragment.ProfileFragment;
@@ -50,6 +51,7 @@ public class MainScreen extends AppCompatActivity implements ActionForumInterfac
     private TextView user_email;
     private TextView name;
     private int type ;
+    private int course_id;
     FloatingActionButton btnSignUP;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,12 @@ public class MainScreen extends AppCompatActivity implements ActionForumInterfac
                 action();
             }
         });
+        if(course_id !=-1) {
+            InfoCourseFragment infoCourseFragment = new InfoCourseFragment(course_id);
+            FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frMain, infoCourseFragment);
+            transaction.commit();
+        }
     }
 
     private void action() {
@@ -117,7 +125,7 @@ public class MainScreen extends AppCompatActivity implements ActionForumInterfac
 
     private void setData() {
         intent = getIntent();
-
+        course_id = intent.getIntExtra("course_id", -1);
     }
 
     private void eventNoti() {

@@ -2,6 +2,7 @@ package com.ashpex.portality.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ashpex.portality.MainScreen;
 import com.ashpex.portality.R;
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.Course;
@@ -92,6 +94,15 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
                     cancelCourse(mlist.get(position));
             }
         });
+
+        holder.layout_color.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.context, MainScreen.class);
+                intent.putExtra("course_id", mlist.get(position).getCourse_id());
+                holder.context.startActivity(intent);
+            }
+        });
     }
 
     private void cancelCourse(Course course) {
@@ -123,6 +134,8 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
                 Toast.makeText(context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 
     @Override
@@ -136,16 +149,21 @@ public class SignUpCourseAdapter extends RecyclerView.Adapter<SignUpCourseAdapte
         private final TextView nameTeacher_item;
         public final ImageButton btnRegister;
         private final LinearLayout layout_color;
+        private final Context context;
         public SignUpCourseViewHolder(@NonNull View itemView) {
             super(itemView);
             nameCourse_item = itemView.findViewById(R.id.nameCourse_item);
             nameTeacher_item = itemView.findViewById(R.id.nameTeacher_item);
             btnRegister = itemView.findViewById(R.id.btnRegister);
             layout_color = itemView.findViewById(R.id.layout_color);
+            context = itemView.getContext();
         }
         public void bindData(Course pos) {
             layout_color.setBackgroundColor(Color.parseColor(pos.getColor()));
             nameCourse_item.setText(pos.getCourse_name());
+            if(pos.getTeacher_name() == null)
+                nameTeacher_item.setVisibility(View.INVISIBLE);
+            else
             nameTeacher_item.setText("Giáo viên: " + pos.getTeacher_name());
 
         }

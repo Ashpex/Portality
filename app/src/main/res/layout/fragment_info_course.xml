@@ -24,7 +24,7 @@
         android:paddingEnd="10dp"
         android:paddingTop="2dp">
         <ImageView
-            android:id="@+id/ImgProfilePic"
+            android:id="@+id/imgProfilePic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
@@ -53,7 +53,31 @@
         </LinearLayout>
 
     </LinearLayout>
-
+    <LinearLayout
+        android:background="@drawable/vie_bg"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="5dp">
+        <TextView
+            android:id="@+id/bntInfo"
+            android:textColor="@color/blue"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:textSize="20dp"
+            android:text="Thông tin"/>
+        <TextView
+            android:id="@+id/btnDiscuss"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:textSize="20dp"
+            android:text="Thảo luận"/>
+    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -62,29 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/vie_bg">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:padding="5dp">
-                <TextView
-                    android:textColor="@color/blue"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:textSize="20dp"
-                    android:text="Thông tin"/>
-                <TextView
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:textSize="20dp"
-                    android:text="Thảo luận"/>
-            </LinearLayout>
+            android:background="@color/white">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,7 +105,24 @@
                 android:layout_marginStart="20dp"
                 android:textColor="@color/gray"
                 android:text="@string/exampleTime"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:textSize="20sp"
+                android:text="Ngày kết thúc"/>
 
+            <TextView
+                android:id="@+id/txtTimeEnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/gray"
+                android:text="@string/exampleTime"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -121,7 +140,7 @@
                 android:text="@string/exampleTimeTitle"/>
 
             <TextView
-                android:id="@+id/sex_profile"
+                android:id="@+id/time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -146,7 +165,7 @@
                 android:text="@string/exampleDescriptionTitle"/>
 
             <TextView
-                android:id="@+id/duty_profile"
+                android:id="@+id/txtDes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -171,7 +190,7 @@
                 android:text="@string/exampleLinkTitle"/>
 
             <TextView
-                android:id="@+id/dob_profile"
+                android:id="@+id/txtLinkZoom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -195,7 +214,7 @@
                 android:text="@string/exmapleFeeTitle"/>
 
             <TextView
-                android:id="@+id/address_profile"
+                android:id="@+id/txtFee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
