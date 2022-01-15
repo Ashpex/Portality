@@ -70,11 +70,11 @@ public class FeeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<UserCourseOnStudying>> call, Response<List<UserCourseOnStudying>> response) {
                 if(response.code() == 200) {
-                    List<UserCourseOnStudying> mlist = response.body();
+                    mList = response.body();
                     userFeeAdpater = new UserFeeAdpater(getContext());
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
                     rycFee.setLayoutManager(linearLayoutManager);
-                    userFeeAdpater.setData(mlist);
+                    userFeeAdpater.setData(mList);
                     rycFee.setAdapter(userFeeAdpater);
                 }
             }

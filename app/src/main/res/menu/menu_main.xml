@@ -18,7 +18,7 @@
             android:icon="@drawable/ic_task"
             android:title="@string/task" />
         <item
-            android:id="@+id/menuFee"
+            android:id="@+id/menuFeeUser"
             android:icon="@drawable/ic_fee"
             android:title="@string/course_fee" />
         <item
