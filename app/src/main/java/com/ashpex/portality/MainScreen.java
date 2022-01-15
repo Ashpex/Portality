@@ -9,6 +9,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -182,7 +183,7 @@ public class MainScreen extends AppCompatActivity implements ActionForumInterfac
             temp1 ="Học phí";
         }
         navigationView.getMenu().findItem(R.id.menuCourseSignUp).setTitle(temp);
-        navigationView.getMenu().findItem(R.id.menuFee).setTitle(temp1);
+        navigationView.getMenu().findItem(R.id.menuFeeUser).setTitle(temp1);
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -196,6 +197,7 @@ public class MainScreen extends AppCompatActivity implements ActionForumInterfac
 
     private void eventClickNav(MenuItem item) {
         item.setChecked(true);
+
         switch (item.getItemId()){
             case R.id.menuHome:{
                 bottomNavigation.getMenu().findItem(R.id.menuBotHome).setChecked(true);
@@ -222,18 +224,16 @@ public class MainScreen extends AppCompatActivity implements ActionForumInterfac
                 return;
             }
 
-
-            case R.id.menuSchedule:{
+            case R.id.menuFeeUser:{
                 FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frMain, new CalendarFragment());
+                transaction.replace(R.id.frMain, new FeeFragment());
                 transaction.commit();
                 drawerLayout.closeDrawers();
                 return;
             }
-
-            case R.id.menuFee:{
+            case R.id.menuSchedule:{
                 FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frMain, new FeeFragment());
+                transaction.replace(R.id.frMain, new CalendarFragment());
                 transaction.commit();
                 drawerLayout.closeDrawers();
                 return;

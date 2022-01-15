@@ -217,7 +217,7 @@ public class ForumFragment extends Fragment {
                 ryc_forum.setAdapter(userCourseAdapter);
             }
             else
-                Toast.makeText(getContext(), "Hôm nay lịch trống", Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), "Hôm nay lịch trống", Toast.LENGTH_SHORT).show();
         }
     }
 }
