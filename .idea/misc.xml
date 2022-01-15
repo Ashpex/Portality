@@ -78,9 +78,11 @@
         <entry key="app/src/main/res/drawable/gradient_green.xml" value="0.5177083333333333" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.4824074074074074" />
         <entry key="app/src/main/res/drawable/ic_exit.xml" value="0.4824074074074074" />
+        <entry key="app/src/main/res/drawable/ic_fee_blue.xml" value="0.3527777777777778" />
         <entry key="app/src/main/res/drawable/ic_forum_white.xml" value="0.4023148148148148" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.4601851851851852" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.4824074074074074" />
+        <entry key="app/src/main/res/drawable/ic_main_menu.xml" value="0.3527777777777778" />
         <entry key="app/src/main/res/drawable/ic_menu_out.xml" value="0.4824074074074074" />
         <entry key="app/src/main/res/drawable/ic_notification.xml" value="0.5177083333333333" />
         <entry key="app/src/main/res/drawable/ic_notification_active.xml" value="0.4601851851851852" />
@@ -107,6 +109,7 @@
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.34675925925925927" />
+        <entry key="app/src/main/res/layout/fragment_fee.xml" value="0.3384259259259259" />
         <entry key="app/src/main/res/layout/fragment_forgot_password1.xml" value="0.44212962962962965" />
         <entry key="app/src/main/res/layout/fragment_forgot_password2.xml" value="0.44212962962962965" />
         <entry key="app/src/main/res/layout/fragment_forum.xml" value="0.33" />
@@ -119,6 +122,7 @@
         <entry key="app/src/main/res/layout/item_course_forum.xml" value="0.44212962962962965" />
         <entry key="app/src/main/res/layout/item_course_on_studying.xml" value="0.3384259259259259" />
         <entry key="app/src/main/res/layout/item_course_sign_up.xml" value="0.44212962962962965" />
+        <entry key="app/src/main/res/layout/item_fee.xml" value="0.3384259259259259" />
         <entry key="app/src/main/res/layout/item_noti.xml" value="0.44212962962962965" />
         <entry key="app/src/main/res/layout/item_ryc_noti.xml" value="0.44212962962962965" />
         <entry key="app/src/main/res/layout/item_task_bot.xml" value="0.38657407407407407" />

@@ -9,6 +9,16 @@ public class UserCourseOnStudying {
     private String time_end;
     private int day_study;
     private String color;
+    private String fee="0$";
+
+    public String getFee() {
+        return fee;
+    }
+
+    public void setFee(String fee) {
+        this.fee = fee;
+    }
+
     public String getCourse_name() {
         return course_name;
     }
