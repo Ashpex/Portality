@@ -133,8 +133,8 @@ public class SignUpActivity extends AppCompatActivity {
                     Gson gson = new GsonBuilder().create();
                     ErrorMessage mError = new ErrorMessage();
                     try {
-                        //mError= gson.fromJson(response.errorBody().string(),ErrorMessage.class);
-                        printToast(response.errorBody().string());
+                        mError= gson.fromJson(response.errorBody().string(),ErrorMessage.class);
+                        printToast(mError.getMessage());
                     } catch (IOException e) {
                         // handle failure to read error
                     }

@@ -56,6 +56,10 @@
         <entry key="..\:/Coding/Portality/app/src/main/res/menu/menu_main.xml" value="0.14375" />
         <entry key="..\:/Portality/app/src/main/res/drawable/circle_icon.xml" value="0.2911458333333333" />
         <entry key="..\:/Portality/app/src/main/res/drawable/gradient_green.xml" value="0.2911458333333333" />
+        <entry key="..\:/Portality/app/src/main/res/drawable/ic_finish_sign_up.xml" value="0.2630208333333333" />
+        <entry key="..\:/Portality/app/src/main/res/drawable/ic_finished.xml" value="0.2630208333333333" />
+        <entry key="..\:/Portality/app/src/main/res/drawable/ic_registered.xml" value="0.2630208333333333" />
+        <entry key="..\:/Portality/app/src/main/res/drawable/ic_unregistered.xml" value="0.2630208333333333" />
         <entry key="..\:/Portality/app/src/main/res/layout/activity_course.xml" value="0.264" />
         <entry key="..\:/Portality/app/src/main/res/layout/activity_create_course.xml" value="0.4" />
         <entry key="..\:/Portality/app/src/main/res/layout/activity_login.xml" value="0.1" />

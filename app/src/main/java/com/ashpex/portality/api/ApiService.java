@@ -6,7 +6,9 @@ import com.ashpex.portality.model.ErrorMessage;
 import com.ashpex.portality.model.LoginRequest;
 import com.ashpex.portality.model.LoginStatus;
 import com.ashpex.portality.model.SignCourseForm;
+import com.ashpex.portality.model.SignUpCourseForm;
 import com.ashpex.portality.model.SubCourseId;
+import com.ashpex.portality.model.Subject;
 import com.ashpex.portality.model.UserCourseOnStudying;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,6 +57,10 @@ public interface ApiService {
     @POST("/course/{user_id}/sign")
     Call<ResponseBody> signUpCourseRequestStudent(@Path("user_id") int user_id, @Body SubCourseId body, @Header("auth") String token);
 
+    @Headers({"Content-Type: application/json"})
+    @POST("/course/{user_id}/sign")
+    Call<ResponseBody> signUpCourseRequestTeacher(@Path("user_id") int user_id, @Body SignUpCourseForm body, @Header("auth") String token);
+
     @DELETE("/course/{user_id}/unsign/{course_id}")
     Call<ResponseBody> unSignCourse(@Path("user_id") int userId, @Path("course_id") int courseId ,@Header("auth") String token);
 
@@ -64,4 +70,8 @@ public interface ApiService {
     @Headers({"Content-Type: application/json"})
     @POST("/user/register")
     Call<ResponseBody> signUpUser(@Body SignCourseForm body);
+
+    @GET("/course/subject")
+    Call<List<Subject>> getAllSubject();
+
 }

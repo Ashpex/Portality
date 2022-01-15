@@ -74,7 +74,7 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
         if(mlist.get(position).getCurr_state() == 0 && type ==2)
             holder.btnRegister.setBackgroundResource(R.drawable.ic_registered);
         if(mlist.get(position).getCurr_state() == 0 && type ==1)
-            holder.btnRegister.setBackgroundResource(R.drawable.ic_unregistered);
+            holder.btnRegister.setBackgroundResource(R.drawable.ic_finish_sign_up);
         if(mlist.get(position).getCurr_state()==0 ) {
             holder.btnRegister.setOnClickListener(new View.OnClickListener() {
                 @Override

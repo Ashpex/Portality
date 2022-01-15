@@ -76,10 +76,10 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginStart="20dp"
                         android:textColor="@color/black"
-                        android:text="Thời gian"
+                        android:text="Ngày bắt đầu"
                         android:textSize="15dp"/>
                     <EditText
-                        android:id="@+id/txtTime"
+                        android:id="@+id/txtDateStart"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="10dp"
@@ -101,17 +101,17 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginStart="20dp"
                         android:textColor="@color/black"
-                        android:text="Thứ"
+                        android:text="Ngày kết thúc"
                         android:textSize="15dp"/>
                     <EditText
-                        android:id="@+id/txtDay_of_wwek"
+                        android:id="@+id/txtDateEnd"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
                         android:textColor="@color/black"
-                        android:hint="Monday"
+                        android:hint="01/01/2021"
+                        android:drawableEnd="@drawable/ic_time"
                         android:textSize="15dp"/>
                 </LinearLayout>
             </LinearLayout>
@@ -168,6 +168,60 @@
                         android:textSize="15dp"/>
                 </LinearLayout>
             </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
+                        android:text="Khoa của khóa học"
+                        android:textSize="15dp"/>
+                    <EditText
+                        android:id="@+id/txtSubject"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/black"
+                        android:text="Thứ"
+                        android:textSize="15dp"/>
+                    <EditText
+                        android:id="@+id/txtDay_of_wwek"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:textColor="@color/black"
+                        android:hint="Monday"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
@@ -219,6 +273,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:textColor="@color/black"
+                android:inputType="number"
                 android:hint="180.000"
                 android:textSize="15dp"/>
             <TextView
@@ -237,6 +292,24 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:textColor="@color/black"
+                android:textSize="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/black"
+                android:text="Số lượng học viên tối đa"
+                android:textSize="15dp"/>
+            <EditText
+                android:id="@+id/txtMax"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/black"
+                android:inputType="number"
                 android:textSize="15dp"/>
             <ImageButton
                 android:id="@+id/btnSave"
