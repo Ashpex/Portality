@@ -63,6 +63,7 @@ public class MainScreen extends AppCompatActivity implements ActionForumInterfac
         settingBottomNavigation();
         eventToolBar();
         eventNoti();
+        firstEvents();
 
         btnSignUP = findViewById(R.id.btnSignUP);
         btnSignUP.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +78,16 @@ public class MainScreen extends AppCompatActivity implements ActionForumInterfac
             transaction.replace(R.id.frMain, infoCourseFragment);
             transaction.commit();
         }
+    }
+
+    private void firstEvents() {
+        navigationView.getMenu().findItem(R.id.menuHome).setChecked(true);
+        bottomNavigation.getMenu().findItem(R.id.menuBotHome).setChecked(true);
+        FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+        ForumFragment f = new ForumFragment();
+        f.setActionForumInterface(this);
+        transaction.replace(R.id.frMain, f);
+        transaction.commit();
     }
 
     private void action() {
