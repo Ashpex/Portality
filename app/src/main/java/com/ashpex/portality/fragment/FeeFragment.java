@@ -20,8 +20,13 @@ import com.ashpex.portality.adapter.UserFeeAdpater;
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.UserCourseOnStudying;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -79,14 +84,24 @@ public class FeeFragment extends Fragment {
                     rycFee.setLayoutManager(linearLayoutManager);
                     userFeeAdpater.setData(mList);
                     rycFee.setAdapter(userFeeAdpater);
-                    /*
-                    double total  = 0;
-                    for(int i = 0; i < mList.size(); i++){
-                        total  += Double.parseDouble(mList.get(i).getFee());
-                    }
-                    tvTotal.setText(String.valueOf(total));
 
-                     */
+                    double totalFee  = 0;
+                    DecimalFormat df = new DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
+                    df.setMaximumFractionDigits(340);
+                    Locale vietnam = new Locale("vi", "VN");
+                    Currency dong = Currency.getInstance(vietnam);
+                    NumberFormat dongFormat = NumberFormat.getCurrencyInstance(vietnam);
+
+                    for(int i = 0; i < mList.size(); i++){
+                        String fee = mList.get(i).getFee();
+                        String format = fee.replaceAll("[^\\d.]+", "");
+                        totalFee  += Double.parseDouble(format);
+
+                        System.out.println(dong.getDisplayName() + ": " + dongFormat.format(totalFee));
+                    }
+                    tvTotal.setText(dongFormat.format(totalFee));
+
+
                 }
             }
 

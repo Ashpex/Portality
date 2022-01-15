@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tổng: "
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="@color/red"/>
 
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:text="1.000.000 đ"/>
