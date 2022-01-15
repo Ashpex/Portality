@@ -34,6 +34,7 @@ public class SearchResultActivity extends AppCompatActivity {
     private String token ;
     private int userId ;
     private int type;
+    private int page;
     SharedPreferences sharedPref ;
     private Intent intent;
     @Override
@@ -62,10 +63,11 @@ public class SearchResultActivity extends AppCompatActivity {
         token = sharedPref.getString("token", "null");
         userId = sharedPref.getInt("user_id", 0);
         type = sharedPref.getInt("user_type", 0);
+        page = sharedPref.getInt("page", 1);
         userCourseSignedAdapter = new UserCourseSignedAdapter();
     }
     private void actionSearch() {
-        ApiService.apiService.search(textSearch, 1).enqueue(new Callback<List<CourseSigned>>() {
+        ApiService.apiService.search(textSearch, page).enqueue(new Callback<List<CourseSigned>>() {
             @Override
             public void onResponse(Call<List<CourseSigned>> call, Response<List<CourseSigned>> response) {
                 if(response.code()==200){

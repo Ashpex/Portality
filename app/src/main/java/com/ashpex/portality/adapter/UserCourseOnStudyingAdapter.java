@@ -1,13 +1,18 @@
 package com.ashpex.portality.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ashpex.portality.MainScreen;
 import com.ashpex.portality.R;
 import com.ashpex.portality.model.UserCourseOnStudying;
 
@@ -34,6 +39,15 @@ public class UserCourseOnStudyingAdapter extends RecyclerView.Adapter<UserCourse
     @Override
     public void onBindViewHolder(@NonNull UserCourseOnStudyingAdapter.UserCourseViewHolder holder, int position) {
         holder.bindData(mlist.get(position));
+
+        holder.layout_color.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.context, MainScreen.class);
+                intent.putExtra("course_id", mlist.get(position).getCourse_id());
+                holder.context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -46,11 +60,15 @@ public class UserCourseOnStudyingAdapter extends RecyclerView.Adapter<UserCourse
         private final TextView nameCourse;
         private final TextView timeCourse;
         private final TextView nameTeacher;
+        private final LinearLayout layout_color;
+        private final Context context;
         public UserCourseViewHolder(@NonNull View itemView) {
             super(itemView);
             nameCourse = itemView.findViewById(R.id.nameCourse);
             timeCourse = itemView.findViewById(R.id.timeCourse);
             nameTeacher = itemView.findViewById(R.id.nameTeacher);
+            layout_color = itemView.findViewById(R.id.layout_color);
+            context = itemView.getContext();
         }
         public void bindData(UserCourseOnStudying pos) {
             nameCourse.setText(pos.getCourse_name());

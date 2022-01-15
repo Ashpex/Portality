@@ -74,4 +74,7 @@ public interface ApiService {
     @GET("/course/subject")
     Call<List<Subject>> getAllSubject();
 
+    @GET("/course/{course_id}")
+    Call<Course> getInfoCourse(@Path("course_id") int course_id);
+
 }

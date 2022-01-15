@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,12 +50,12 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
             ryc_ryc_noti = itemView.findViewById(R.id.ryc_ryc_noti);
         }
         public void bindData(String pos) {
-            time_ryc_noti.setText("Ngày em rời xa");
+            time_ryc_noti.setText("Thông báo ngày XX");
             List<String> tlist = new ArrayList<String>();
             tlist.add("1");tlist.add("1");tlist.add("1");tlist.add("1");tlist.add("1");
 
             ryc_ryc_noti.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.VERTICAL, false));
-            ryc_ryc_noti.setAdapter(new RycAdapter(tlist));
+            ryc_ryc_noti.setAdapter(new NotificationAdapter(tlist));
         }
     }
 }

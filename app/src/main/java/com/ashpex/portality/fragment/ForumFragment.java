@@ -1,6 +1,7 @@
 package com.ashpex.portality.fragment;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,6 +30,7 @@ import com.ashpex.portality.ActionForumInterface;
 import com.ashpex.portality.CourseActivity;
 import com.ashpex.portality.R;
 import com.ashpex.portality.SearchResultActivity;
+import com.ashpex.portality.SignUpActivity;
 import com.ashpex.portality.adapter.UserCourseOnStudyingAdapter;
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.Course;
@@ -59,6 +62,7 @@ public class ForumFragment extends Fragment {
     private ActionForumInterface actionForumInterface;
     private EditText searchText;
     private ImageView searchingIcon;
+    private int page;
 
     public void setActionForumInterface(ActionForumInterface actionForumInterface) {
         this.actionForumInterface = actionForumInterface;
@@ -132,9 +136,7 @@ public class ForumFragment extends Fragment {
                 }
                 else
                 {
-                    Intent intent = new Intent(getActivity(), SearchResultActivity.class);
-                    intent.putExtra("text_search", searchText.getText().toString());
-                    startActivity(intent);
+                    dialogDuty();
                 }
             }
         });
@@ -158,7 +160,24 @@ public class ForumFragment extends Fragment {
         });
     }
 
-
+    private void dialogDuty() {
+        final String[] state = {
+                "Khóa học đang trong thời gian đăng ký", "Khóa học đang trong thời gian học",
+                "Khóa học đã kết thúc"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Option");
+        builder.setItems(state, new DialogInterface.OnClickListener() {@Override
+        public void onClick(DialogInterface dialog, int which) {
+            page = which;
+            dialog.cancel();
+            Intent intent = new Intent(getActivity(), SearchResultActivity.class);
+            intent.putExtra("text_search", searchText.getText().toString());
+            intent.putExtra("page", page);
+            startActivity(intent);
+        }
+        });
+        builder.show();
+    }
 
     private void setCheckedSchedule() {
         navigationView.getMenu().findItem(R.id.menuSchedule).setChecked(true);

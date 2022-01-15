@@ -2,6 +2,7 @@ package com.ashpex.portality.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ashpex.portality.MainScreen;
 import com.ashpex.portality.R;
 import com.ashpex.portality.api.ApiService;
 import com.ashpex.portality.model.CourseSigned;
@@ -109,6 +111,14 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
                 }
             });
         }
+        holder.layout_color.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.context, MainScreen.class);
+                intent.putExtra("course_id", mlist.get(position).getCourse_id());
+                holder.context.startActivity(intent);
+            }
+        });
     }
 
     @Override
