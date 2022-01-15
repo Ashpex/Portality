@@ -3,10 +3,7 @@ package com.ashpex.portality.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-<<<<<<< HEAD
-=======
 import android.content.res.ColorStateList;
->>>>>>> refs/remotes/origin/master
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;

@@ -56,34 +56,21 @@
         <entry key="..\:/Coding/Portality/app/src/main/res/menu/menu_main.xml" value="0.14375" />
         <entry key="..\:/Portality/app/src/main/res/drawable/circle_icon.xml" value="0.2911458333333333" />
         <entry key="..\:/Portality/app/src/main/res/drawable/gradient_green.xml" value="0.2911458333333333" />
-        <entry key="..\:/Portality/app/src/main/res/drawable/ic_finish_sign_up.xml" value="0.2630208333333333" />
-        <entry key="..\:/Portality/app/src/main/res/drawable/ic_finished.xml" value="0.2630208333333333" />
-        <entry key="..\:/Portality/app/src/main/res/drawable/ic_registered.xml" value="0.2630208333333333" />
-        <entry key="..\:/Portality/app/src/main/res/drawable/ic_unregistered.xml" value="0.2630208333333333" />
-        <entry key="..\:/Portality/app/src/main/res/drawable/radius.xml" value="0.18611111111111112" />
         <entry key="..\:/Portality/app/src/main/res/layout/activity_course.xml" value="0.264" />
-        <entry key="..\:/Portality/app/src/main/res/layout/activity_create_course.xml" value="0.4" />
         <entry key="..\:/Portality/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Portality/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Portality/app/src/main/res/layout/activity_notification.xml" value="0.275" />
-        <entry key="..\:/Portality/app/src/main/res/layout/activity_search_result.xml" value="0.275" />
-        <entry key="..\:/Portality/app/src/main/res/layout/activity_sign_up.xml" value="0.275" />
         <entry key="..\:/Portality/app/src/main/res/layout/app_bar_main.xml" value="0.264" />
         <entry key="..\:/Portality/app/src/main/res/layout/content_main.xml" value="0.21739130434782608" />
         <entry key="..\:/Portality/app/src/main/res/layout/fragment_forum.xml" value="0.266304347826087" />
-        <entry key="..\:/Portality/app/src/main/res/layout/fragment_info_course.xml" value="0.2" />
         <entry key="..\:/Portality/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
-        <entry key="..\:/Portality/app/src/main/res/layout/fragment_sign_up.xml" value="0.17617753623188406" />
         <entry key="..\:/Portality/app/src/main/res/layout/header_menu_main.xml" value="0.21739130434782608" />
         <entry key="..\:/Portality/app/src/main/res/layout/item_course_forum.xml" value="0.16927083333333334" />
-        <entry key="..\:/Portality/app/src/main/res/layout/item_course_on_studying.xml" value="0.275" />
         <entry key="..\:/Portality/app/src/main/res/layout/item_course_sign_up.xml" value="0.264" />
         <entry key="..\:/Portality/app/src/main/res/layout/item_noti.xml" value="0.21739130434782608" />
         <entry key="..\:/Portality/app/src/main/res/layout/item_ryc_noti.xml" value="0.21739130434782608" />
         <entry key="..\:/Portality/app/src/main/res/layout/item_task_bot.xml" value="0.2504528985507246" />
         <entry key="..\:/Portality/app/src/main/res/layout/item_task_top.xml" value="0.21739130434782608" />
         <entry key="..\:/Portality/app/src/main/res/layout/main_screen.xml" value="0.21739130434782608" />
-        <entry key="..\:/Portality/app/src/main/res/layout/sign_up.xml" value="0.18115942028985507" />
         <entry key="..\:/Portality/app/src/main/res/menu/menu_bottom_main_screen.xml" value="0.275" />
         <entry key="..\:/Portality/app/src/main/res/menu/menu_main.xml" value="0.275" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.4824074074074074" />
@@ -130,6 +117,7 @@
         <entry key="app/src/main/res/layout/fragment_task.xml" value="0.44212962962962965" />
         <entry key="app/src/main/res/layout/header_menu_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_course_forum.xml" value="0.44212962962962965" />
+        <entry key="app/src/main/res/layout/item_course_on_studying.xml" value="0.3384259259259259" />
         <entry key="app/src/main/res/layout/item_course_sign_up.xml" value="0.44212962962962965" />
         <entry key="app/src/main/res/layout/item_noti.xml" value="0.44212962962962965" />
         <entry key="app/src/main/res/layout/item_ryc_noti.xml" value="0.44212962962962965" />

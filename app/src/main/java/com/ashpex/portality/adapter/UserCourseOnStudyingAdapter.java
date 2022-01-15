@@ -2,10 +2,7 @@ package com.ashpex.portality.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-<<<<<<< HEAD
-=======
 import android.graphics.Color;
->>>>>>> refs/remotes/origin/master
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
