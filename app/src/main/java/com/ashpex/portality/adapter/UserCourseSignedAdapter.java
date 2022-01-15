@@ -68,6 +68,7 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.bindData(mlist.get(position));
+        CourseSigned courseSigned = mlist.get(position);
         if(state==1)
             holder.btnRegister.setVisibility(View.INVISIBLE);
         else
@@ -106,7 +107,23 @@ public class UserCourseSignedAdapter extends RecyclerView.Adapter<UserCourseSign
                         });
 
                     if(type==1) {
+                        ApiService.apiService.startCourse(userId, courseSigned.getCourse_id(),token).enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                if(response.code()==200) {
+                                    Toast.makeText(holder.context, "Đã kết thúc đăng ký môn học", Toast.LENGTH_SHORT).show();
+                                    holder.btnRegister.setBackgroundResource(R.drawable.ic_unfinished);
+                                }
+                                else
+                                    Toast.makeText(holder.context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
 
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                Toast.makeText(holder.context, "Lỗi server, vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 }
             });

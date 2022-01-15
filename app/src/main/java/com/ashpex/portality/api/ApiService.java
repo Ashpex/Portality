@@ -25,6 +25,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -76,5 +77,8 @@ public interface ApiService {
 
     @GET("/course/{course_id}")
     Call<Course> getInfoCourse(@Path("course_id") int course_id);
+
+    @PUT("/course/{user_id}/start")
+    Call<ResponseBody> startCourse(@Path("user_id") int user_Id, @Query("courseId") int course_id, @Header("auth") String token);
 
 }
