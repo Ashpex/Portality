@@ -41,8 +41,8 @@ public class UserFeeAdpater extends  RecyclerView.Adapter<UserFeeAdpater.FeeView
     @NonNull
     @Override
     public FeeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_fee, parent);
-        return new FeeViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_fee, parent,false);
+        return new UserFeeAdpater.FeeViewHolder(view);
     }
 
     @Override

@@ -79,12 +79,14 @@ public class FeeFragment extends Fragment {
                     rycFee.setLayoutManager(linearLayoutManager);
                     userFeeAdpater.setData(mList);
                     rycFee.setAdapter(userFeeAdpater);
-
+                    /*
                     double total  = 0;
                     for(int i = 0; i < mList.size(); i++){
                         total  += Double.parseDouble(mList.get(i).getFee());
                     }
                     tvTotal.setText(String.valueOf(total));
+
+                     */
                 }
             }
 
