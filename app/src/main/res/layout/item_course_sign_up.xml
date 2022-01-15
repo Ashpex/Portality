@@ -42,4 +42,5 @@
             android:background="@drawable/ic_finished"
             android:layout_gravity="end"/>
     </LinearLayout>
+
 </LinearLayout>
