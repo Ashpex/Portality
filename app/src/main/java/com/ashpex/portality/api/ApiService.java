@@ -61,4 +61,8 @@ public interface ApiService {
 
     @GET("/course/search")
     Call<List<CourseSigned>> search(@Query("q") String searchInfo, @Query("state") int state);
+
+    @Headers({"Content-Type: application/json"})
+    @POST("/user/register")
+    Call<ResponseBody> signUpUser(@Body RequestBody body);
 }
