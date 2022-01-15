@@ -128,7 +128,8 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if(response.code()==200) {
-                    printToast("Đăng ký thành công");
+                    printToast("Mời vào hòm thư xác nhận email");
+                    finish();
                 } else if(response.code()==400){
                     Gson gson = new GsonBuilder().create();
                     ErrorMessage mError = new ErrorMessage();
