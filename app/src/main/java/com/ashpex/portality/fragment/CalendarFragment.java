@@ -100,6 +100,7 @@ public class CalendarFragment extends Fragment {
             }
         }
 
+
         Calendar startTime2 = Calendar.getInstance();
         startTime2.add(Calendar.DAY_OF_YEAR, 1);
         Calendar endTime2 = Calendar.getInstance();
@@ -110,6 +111,21 @@ public class CalendarFragment extends Fragment {
                     R.color.darker_blue, startTime2, endTime2, true);
             eventList.add(event2);
         }
+        Calendar startTime4 = Calendar.getInstance();
+        startTime4.add(Calendar.DAY_OF_YEAR, 1);
+        Calendar endTime4 = Calendar.getInstance();
+        endTime4.add(Calendar.DAY_OF_YEAR, 1);
+        BaseCalendarEvent event4 = new BaseCalendarEvent("Nhập môn Công nghệ thông tin", "Phạm Thị Minh Tuyền", "Phạm Thị Minh Tuyền",
+                R.color.darker_blue, startTime4, endTime4, true);
+        eventList.add(event4);
+
+        Calendar startTime1 = Calendar.getInstance();
+        startTime1.add(Calendar.DAY_OF_YEAR, 2);
+        Calendar endTime1 = Calendar.getInstance();
+        endTime1.add(Calendar.DAY_OF_YEAR, 2);
+        BaseCalendarEvent event1 = new BaseCalendarEvent("Nhập môn Công nghệ phần mềm", "Phạm Thị Minh Tuyền", "hạm Thị Minh Tuyền",
+                R.color.darker_blue, startTime1, endTime1, true);
+        eventList.add(event1);
 
 
         mAgendaCalendarView.init(eventList, minDate, maxDate, Locale.getDefault(), calendarPickerController);
